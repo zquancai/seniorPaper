@@ -15,6 +15,9 @@ RMURL='https://rm.api.weibo.com/2/'
 CODE = 'd0fad9aa9c8d69174ebcd98fba736136'
 access_token_file_path = 'token.txt'
 
+errorDict = {'code':'-1'}
+successDict = {'code':'1'}
+
 class APIClient:
     def getAUTHORIZE(self):
         postdata = urllib.parse.urlencode({'client_id':CLIENT_ID,'client_secret':CLIENT_SERCRET,'grant_type':'authorization_code','code':CODE,'redirect_uri':REDIRECT_URI})
@@ -33,6 +36,39 @@ class APIClient:
         f = open(access_token_file_path, 'r')
         token = f.read()
         return token
+
+    # 接口访问模板
+    def reqTpl(self,url,dict,type):
+        theURL = url
+        request = '{}'
+        data = None
+        codeInfo = None
+
+        if type == 'get':
+            if len(dict.keys()) > 0:
+                theURL = theURL + '?'
+            for key in dict.keys():
+                theURL = theURL + '%s=%s'%(key,dict[key])
+            request = urllib.request.Request(theURL)
+            try:
+                resdata = urllib.request.urlopen(request).read().decode('utf-8')
+                codeInfo = successDict
+            except:
+                codeInfo = errorDict
+        elif type == 'post':
+            postdata = None
+            for key in dict.keys():
+                 postdata = urllib.parse.urlencode({key,dict[key]})
+            request = urllib.request.Request(theURL)
+            try:
+                resdata = urllib.request.urlopen(request,postdata).read().decode('utf-8')
+                codeInfo = successDict
+            except:
+                codeInfo = errorDict
+        data = {'data':resdata}
+        data.update(codeInfo)
+        return data
+
     # 获取最新的公共微博json字符串
     def getPublicWeibo(self):
         count = '200'
@@ -45,6 +81,33 @@ class APIClient:
             return data
         except:
             return '获取公共微博失败'
-        
-a = APIClient()
 
+    # 获取一小时内热门话题
+    def getHourly(self):
+        url = 'https://api.weibo.com/2/trends/hourly.json'
+        dict = {'access_token':self.getToken()}
+        reposedata = self.reqTpl(url,dict,'get')
+        thedata = reposedata['data']
+        trends = json.loads(thedata)['trends']
+        print(trends)
+
+    # 获取一天热门话题
+    def getDaily(self):
+        url = 'https://api.weibo.com/2/trends/daily.json'
+        dict = {'access_token':self.getToken()}
+        reposedata = self.reqTpl(url,dict,'get')
+        thedata = reposedata['data']
+        trends = json.loads(thedata)['trends']
+        print(trends)
+
+    # 获取一周热门话题
+    def getWeekly(self):
+        url = 'https://api.weibo.com/2/trends/weekly.json'
+        dict = {'access_token':self.getToken()}
+        reposedata = self.reqTpl(url,dict,'get')
+        thedata = reposedata['data']
+        trends = json.loads(thedata)['trends']
+        print(trends)
+
+a = APIClient()
+a.getWeekly()
