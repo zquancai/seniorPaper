@@ -1,1 +1,3 @@
-__author__ = 'StarDust'
+import sys
+sys.path.append('D:\\MyCode\\seniorPaper\\sina mining\\seniorPaper\\weiboSDk')
+import myWeibo

@@ -1,11 +1,11 @@
 # 初始化文件,导入pymysql
 import sys
 # 添加环境路径，便于加载模块
-sys.path.append('D:\\MyCode\\seniorPaper\\sina mining\\PyMySQL-master')
+sys.path.append('D:\\MyCode\\seniorPaper\\sina mining\\seniorPaper\\PyMySQL-master')
 import pymysql
 class pySql(object):
-    conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='', db='test')
-    cur = conn.cursor()
+    conn = None
+    cur = None
     def __init__(self):
         pass
     def close(self):
