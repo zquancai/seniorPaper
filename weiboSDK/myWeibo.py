@@ -40,16 +40,23 @@ class APIClient:
     # 接口访问模板
     def reqTpl(self,url,dict,type):
         theURL = url
-        request = '{}'
         data = None
         codeInfo = None
-
+        resdata = '{}'
         if type == 'get':
-            if len(dict.keys()) > 0:
+            length = len(dict.keys())
+            counter = 0
+            if length > 0:
                 theURL = theURL + '?'
             for key in dict.keys():
                 theURL = theURL + '%s=%s'%(key,dict[key])
+                counter = counter + 1
+                if counter == length:
+                    pass
+                else:
+                    theURL = theURL + '&&'
             request = urllib.request.Request(theURL)
+            print(theURL)
             try:
                 resdata = urllib.request.urlopen(request).read().decode('utf-8')
                 codeInfo = successDict
@@ -73,14 +80,20 @@ class APIClient:
     def getPublicWeibo(self):
         count = '200'
         url = 'https://api.weibo.com/2/statuses/public_timeline.json'
-        targetUrl = '%s?%s=%s&&count=%s'%(url,'access_token',self.getToken(),count)
-        request = urllib.request.Request(targetUrl)
-        try:
-            d = urllib.request.urlopen(request)
-            data = d.read()
-            return data
-        except:
-            return '获取公共微博失败'
+        dict = {'access_token':self.getToken(),'count':count}
+        reposedata = self.reqTpl(url,dict,'get')
+        thedata = reposedata['data']
+        print(thedata)
+
+        # targetUrl = '%s?%s=%s&&count=%s'%(url,'access_token',self.getToken(),count)
+        # request = urllib.request.Request(targetUrl)
+        # try:
+        #     d = urllib.request.urlopen(request)
+        #     data = d.read().decode('utf-8')
+        #     print(data)
+        #     return data
+        # except:
+        #     return '获取公共微博失败'
 
     # 获取一小时内热门话题
     def getHourly(self):
@@ -90,6 +103,7 @@ class APIClient:
         thedata = reposedata['data']
         trends = json.loads(thedata)['trends']
         print(trends)
+        return trends
 
     # 获取一天热门话题
     def getDaily(self):
@@ -99,6 +113,7 @@ class APIClient:
         thedata = reposedata['data']
         trends = json.loads(thedata)['trends']
         print(trends)
+        return trends
 
     # 获取一周热门话题
     def getWeekly(self):
@@ -108,6 +123,8 @@ class APIClient:
         thedata = reposedata['data']
         trends = json.loads(thedata)['trends']
         print(trends)
+        return trends
 
 a = APIClient()
+a.getPublicWeibo()
 a.getWeekly()
