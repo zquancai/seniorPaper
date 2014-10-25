@@ -1,7 +1,11 @@
 # 初始化文件,导入pymysql
 import sys
 # 添加环境路径，便于加载模块
+# win8
 sys.path.append('D:\\MyCode\\seniorPaper\\sina mining\\seniorPaper\\PyMySQL-master')
+# OSX
+sys.path.append('/Users/stardust/seniorPaper/PyMySQL-master')
+
 import pymysql
 class pySql(object):
     conn = None
@@ -13,7 +17,7 @@ class pySql(object):
             self.conn.close()
     def connect(self):
         try:
-            conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='', db='test')
+            conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='123', db='test')
             cur = conn.cursor()
             return True
         except:
@@ -61,9 +65,8 @@ class pySql(object):
     def fetchAll(self,sql):
         return self.query(sql).fetchall()
 
-
-# a = pySql()
-# d = {"name":"DDD"}
-# #a.insert("testTable",d)
-# a.update("testTable",d,"id = 10")
-# a.close()
+a = pySql()
+a.connect()
+row = {"id":"","name":"jack"}
+a.insert('testTable',row)
+a.close()
