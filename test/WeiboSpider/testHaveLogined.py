@@ -3,8 +3,8 @@
 import urllib
 import cookielib
 import urllib2
-
-target_url = 'http://weibo.com/'
+# 前十位是精确到秒的时间戳
+target_url = 'http://d.weibo.com/100803?from=page_100803&ajaxpagelet=1&__ref=/100803&_t=FM_141803819287940'
 output_fileName = 'test_Login.txt'
 login_url = ''
 cookie_savaPath = 'myLoginCookie.txt'
@@ -20,10 +20,8 @@ def test_writeData():
     writeData(aStr)
 
 
-# 测  试
-postdata = ''
-headers={'User-Agent':'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
-request = urllib2.Request(target_url, postdata, headers)
+# 测  试 - get
+request = urllib2.Request(target_url)
 
 ckjar = cookielib.MozillaCookieJar(cookie_savaPath)
 ckjar.load(ignore_discard=True, ignore_expires=True)
