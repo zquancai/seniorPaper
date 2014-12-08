@@ -6,6 +6,16 @@ import WeiboSearch
 import urllib2
 import cookielib
 
+# cookie 保存路径
+cookie_savaPath = 'myLoginCookie.txt'
+
+def writeData(data,output_fileName):
+    file = open(output_fileName,'w')
+    file.write(data)
+    file.close()
+
+
+
 class WeiboLogin:
     def __init__(self, user, pwd, enableProxy = False):
         print "Initializing WeiboLogin..."
@@ -31,8 +41,19 @@ class WeiboLogin:
         text = result.read()
         try:
             loginUrl = WeiboSearch.sRedirectData(text)#解析重定位结果
-            urllib2.urlopen(loginUrl)
-            self.getCookieUrl = loginUrl
+            # ff = urllib2.urlopen(loginUrl).read().decode('utf-8')
+
+            # save cookie
+            postdata = ''
+            headers={'User-Agent':'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
+            request = urllib2.Request(loginUrl, postdata, headers)
+            ckjar = cookielib.MozillaCookieJar(cookie_savaPath)
+            ckproc = urllib2.HTTPCookieProcessor(ckjar)
+            opener = urllib2.build_opener(ckproc)
+            f = opener.open(request)
+            htm = f.read().decode('utf-8')
+            f.close()
+            ckjar.save(ignore_discard=True, ignore_expires=True)
         except:
             print 'Login error!'
             return False
@@ -69,5 +90,4 @@ class WeiboLogin:
 if __name__ == '__main__':
     weiboLogin = WeiboLogin('2390635102@qq.com', '19920430')#邮箱（账号）、密码
     if weiboLogin.Login() == True:
-
         print "登陆成功！"
