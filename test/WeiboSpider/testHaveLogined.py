@@ -11,8 +11,21 @@ import common
 # 构造时间戳
 timestamp = common.getCurrentTimeStamp() + '999990'
 
-target_url = 'http://d.weibo.com/100803?from=page_100803' \
-             '&ajaxpagelet=1&__ref=/100803&_t=FM_'+timestamp
+# target_url = 'http://d.weibo.com/100803?from=page_100803' \
+#              '&ajaxpagelet=1&__ref=/100803&_t=FM_'+timestamp
+
+page = 1
+
+
+target_url = 'http://d.weibo.com/100803?pids' \
+             '=Pl_Discover_Pt6Rank__5&cfs=920' \
+             '&Pl_Discover_Pt6Rank__5_filter' \
+             '=&Pl_Discover_Pt6Rank__5_page' \
+             '='+ str(page)+'&ajaxpagelet=1&__ref=/100803' \
+                          '&_t' \
+                      '=FM_' \
+                   ''+timestamp
+
 output_fileName = 'test_Login.html'
 login_url = ''
 cookie_savaPath = 'myLoginCookie.txt'
@@ -22,10 +35,6 @@ def writeData(data):
     file = open(output_fileName,'w')
     file.write(data)
     file.close()
-
-def test_writeData():
-    aStr = 'sdfadsakfjdsalfjldksa'
-    writeData(aStr)
 
 
 # 测  试 - get
@@ -39,7 +48,6 @@ f = opener.open(request)
 htm = f.read()
 f.close()
 
-writeData(htm)
 
 # 获取话题名
 TopicRegex.startRegex(htm)

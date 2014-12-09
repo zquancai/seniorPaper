@@ -6,11 +6,6 @@ __author__ = 'stardust'
 import re
 import common
 
-
-
-topic = None
-
-
 d_titleName = []
 d_rank = []
 d_haveRead = []
@@ -34,6 +29,7 @@ def getTitleName(data):
     res = p.findall(data)
     for i in range(0,len(res)):
         d_titleName.append(res[i])
+        print res[i]
 
 # topic rank
 def getTopicRank(data):
@@ -92,6 +88,21 @@ def getTopicReadCount(data):
     for i in range(0,len(res)):
         d_haveRead.append(res[i][1] + res[i][2])
 
+# rebuild the data
+def rebuildData():
+    topicList = []
+    for i in range(0,len(d_titleName)):
+        aTopicItem = {'d_titleName':d_titleName[i],
+                      'd_rank':d_rank[i],
+                      'd_classify':d_classify[i],
+                      'd_timestamp':d_timestamp[i],
+                      'd_postManName':d_postManName[i],
+                      'd_postManLink':d_postManLink[i],
+                      'd_titleLink':d_titleLink[i],
+                      'd_haveRead':d_haveRead
+                      }
+        topicList.append(aTopicItem)
+    return topicList
 
 # the door function
 def startRegex(data):
@@ -103,3 +114,5 @@ def startRegex(data):
     getPostManLink(data)
     getTopicLink(data)
     getTopicReadCount(data)
+    return rebuildData()
+
