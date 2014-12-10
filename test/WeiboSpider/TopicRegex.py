@@ -34,7 +34,6 @@ def getTitleName(data):
     res = p.findall(data)
     for i in range(0,len(res)):
         d_titleName.append(res[i])
-        print res[i]
 
 # topic rank
 def getTopicRank(data):
@@ -53,7 +52,6 @@ def getTopicClassify(data):
     res = p.findall(data)
     for i in range(0,len(res)):
         d_classify.append(res[i][1])
-        print res[i][1]
 
 # topic time
 def getTopicTimestamp():
@@ -70,9 +68,19 @@ def getPostManName(data):
 
 # postman link
 def getPostManLink(data):
-    
+    regex = '<a target=\\\\"_blank\\\\" href=\\\\"http:\\\\/\\\\/weibo.com\\\\/u\\\\/(\d{0,30})'
+    p = re.compile(regex)
+    res = p.findall(data)
+    for i in range(0,len(res)):
+        d_postManLink.append('http://weibo.com/u/'+res[i])
 
-
+# 话题链接
+def getTopicLink(data):
+    regex = '(<a target=\\\\"_blank\\\\" href=\\\\"http:\\\\/\\\\/weibo.com\\\\/p\\\\/)(.{0,150})(\?)'
+    p = re.compile(regex)
+    res = p.findall(data)
+    for i in range(0,len(res)):
+        d_titleLink.append('http://weibo.com/p/'+res[i][1])
 
 # read cout
 def getTopicReadCount(data):
@@ -84,6 +92,7 @@ def getTopicReadCount(data):
     for i in range(0,len(res)):
         d_haveRead.append(res[i][1] + res[i][2])
 
+
 # the door function
 def startRegex(data):
     getTitleName(data)
@@ -91,4 +100,6 @@ def startRegex(data):
     getTopicClassify(data)
     getTopicTimestamp()
     getPostManName(data)
+    getPostManLink(data)
+    getTopicLink(data)
     getTopicReadCount(data)
