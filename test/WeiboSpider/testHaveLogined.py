@@ -3,9 +3,17 @@
 import urllib
 import cookielib
 import urllib2
+import TopicRegex
+import common
+
+
 # 前十位是精确到秒的时间戳
-target_url = 'http://d.weibo.com/100803?from=page_100803&ajaxpagelet=1&__ref=/100803&_t=FM_141803819287940'
-output_fileName = 'test_Login.txt'
+# 构造时间戳
+timestamp = common.getCurrentTimeStamp() + '999990'
+
+target_url = 'http://d.weibo.com/100803?from=page_100803' \
+             '&ajaxpagelet=1&__ref=/100803&_t=FM_'+timestamp
+output_fileName = 'test_Login.html'
 login_url = ''
 cookie_savaPath = 'myLoginCookie.txt'
 
@@ -30,5 +38,13 @@ opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(ckjar))
 f = opener.open(request)
 htm = f.read()
 f.close()
+
 writeData(htm)
+
+# 获取话题名
+TopicRegex.startRegex(htm)
+
+
+
+
 
