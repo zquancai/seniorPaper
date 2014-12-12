@@ -3,6 +3,10 @@
 __author__ = 'stardust'
 
 import MySQLdb
+import sys
+# 保证python默认编码是utf-8
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 class MySQLOP:
 
@@ -18,7 +22,7 @@ class MySQLOP:
 
     def OpenDB(self):
         print 'opening db'
-        self.db = MySQLdb.connect('localhost','root','','seniorPaper')
+        self.db = MySQLdb.connect('localhost','root','','seniorPaper',charset='utf8')
 
     def CloseDB(self):
         self.db.close()
