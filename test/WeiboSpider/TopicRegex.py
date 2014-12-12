@@ -92,6 +92,7 @@ def getTopicReadCount(data):
 def rebuildData():
     topicList = []
     for i in range(0,len(d_titleName)):
+        print i
         aTopicItem = {'d_titleName':d_titleName[i],
                       'd_rank':d_rank[i],
                       'd_classify':d_classify[i],
@@ -99,8 +100,9 @@ def rebuildData():
                       'd_postManName':d_postManName[i],
                       'd_postManLink':d_postManLink[i],
                       'd_titleLink':d_titleLink[i],
-                      'd_haveRead':d_haveRead
+                      'd_haveRead':d_haveRead[i]
                       }
+        print d_haveRead[i]
         topicList.append(aTopicItem)
     return topicList
 
