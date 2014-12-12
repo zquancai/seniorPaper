@@ -54,7 +54,7 @@ def getPageList(page):
 
 # 参数
 timer = 2.0
-couter = 10 #运行小时数
+couter = 3 #运行小时数
 pageCout = 4
 
 mop = MySQLOperator.MySQLOP()
