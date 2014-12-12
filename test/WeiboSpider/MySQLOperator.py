@@ -38,7 +38,8 @@ class MySQLOP:
         except:
            # Rollback in case there is any error
            self.db.rollback()
-           print 'error'
+           print 'error:'+sql
+
 
 
 

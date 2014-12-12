@@ -122,15 +122,17 @@ def getTopicLink(data):
 
 # read cout
 def getTopicReadCount(data):
-    regex = '(<span class=\\\\"number\\\\">)(.{0,20})(万|亿)?'
+    regex = '(<span class=\\\\"number\\\\">)(.\d{0,20})(\.\d{0,20})?(万|亿)?'
      #'(<span class=\\"number\\">).{0,20}(万|亿)'  #
      # 不知道为什么这个正确的反而不行，‘\’问题太大，需要注意
     p = re.compile(regex)
     res = p.findall(data)
     _haveRead = []
     for i in range(0,len(res)):
-        # d_haveRead.append(res[i][1] + res[i][2])
-        _haveRead.append(res[i][1] + res[i][2])
+        if len(res[i]) == 4:
+            _haveRead.append(res[i][1] + res[i][2]+res[i][3])
+        elif(len(res[i]) < 4):
+            _haveRead.append(res[i][1] + res[i][2])
     return _haveRead
 
 # cell getter

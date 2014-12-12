@@ -54,8 +54,8 @@ def getPageList(page):
 
 # 参数
 timer = 2.0
-couter = 3 #运行小时数
-pageCout = 4
+couter = 1 #运行小时数
+pageCout = 20
 
 mop = MySQLOperator.MySQLOP()
 for i in range(0,couter):
@@ -66,21 +66,21 @@ for i in range(0,couter):
         print 'couter:'+str(i)+' pager:'+str(j)
         data = TopicRegex.startRegex(htm)
         print '-----------------------------------------'
-        # d_titleName = "'哈哈'"
-        # d_rank = "'哈哈'"
-        # d_classify = "'哈哈'"
-        # d_timestamp = "'哈哈'"
-        # d_postManName = "'哈哈'"
-        # d_postManLink = "'哈哈'"
-        # d_titleLink = "'哈哈'"
-        # d_haveRead = "'哈哈'"
-        #
-        # sql = """INSERT INTO testtopiclist(d_titleName,
-        #      d_rank, d_classify, d_timestamp, d_postManName,d_postManLink,d_titleLink,d_haveRead)
-        #      VALUES ("""+d_titleName+""", """+d_rank+""", """+d_classify+""", """+d_timestamp+""", """+d_postManName+""", """+d_postManLink+""", """+d_titleLink+""", """+d_haveRead+""")"""
-        # print sql
-        # mop.ExcuteSQL(sql)
+        for k in range(0,len(data)):
+            d_titleName = "'"+data[k]['d_titleName']+"'"
+            d_rank = "'"+data[k]['d_rank']+"'"
+            d_classify = "'"+data[k]['d_classify']+"'"
+            d_timestamp = "'"+data[k]['d_timestamp']+"'"
+            d_postManName = "'"+data[k]['d_postManName']+"'"
+            d_postManLink = "'"+data[k]['d_postManLink']+"'"
+            d_titleLink = "'"+data[k]['d_titleLink']+"'"
+            d_haveRead = "'"+data[k]['d_haveRead']+"'"
 
+            sql = """INSERT INTO testtopiclist(d_titleName,
+                 d_rank, d_classify, d_timestamp, d_postManName,d_postManLink,d_titleLink,d_haveRead)
+                 VALUES ("""+d_titleName+""", """+d_rank+""", """+d_classify+""", """+d_timestamp+""", """+d_postManName+""", """+d_postManLink+""", """+d_titleLink+""", """+d_haveRead+""")"""
+
+            mop.ExcuteSQL(sql)
 
         threading._sleep(timer)
 
