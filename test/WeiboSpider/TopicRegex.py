@@ -71,11 +71,10 @@ def getTopicClassify(data,celldata):
 
 
 # topic time
-def getTopicTimestamp(celldata):
+def getTopicTimestamp(celldata,theTimestamp):
     _timestamp = []
     for i in range(0,len(celldata)):
-        #d_timestamp.append(common.getCurrentTimeStamp())
-        _timestamp.append(common.getCurrentTimeStamp())
+        _timestamp.append(theTimestamp)
     return _timestamp
 
 # postman name
@@ -209,14 +208,14 @@ def reGetPostManLink(cellData,t_postmanLink):
     return t_postmanLink
 
 # the door function
-def startRegex(data):
+def startRegex(data,timeStamp):
     # 获取cell
     d_cell = _getCell(data)
 
     d_titleName = getTitleName(data)
     d_rank = getTopicRank(data)
     d_classify = getTopicClassify(data,d_cell)
-    d_timestamp = getTopicTimestamp(d_cell)
+    d_timestamp = getTopicTimestamp(d_cell,timeStamp)
     d_postManName = getPostManName(data,d_cell)
     d_postManLink = getPostManLink(data,d_cell)
     d_titleLink = getTopicLink(data)

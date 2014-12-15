@@ -28,10 +28,10 @@ def writeData(data):
 
 
 # 测  试 - get
-def getPageList(page):
+def getPageList(page,tstamp):
     # 前十位是精确到秒的时间戳
     # 构造时间戳
-    timestamp = common.getCurrentTimeStamp() + '999990'
+    timestamp = tstamp + '000001'#'999990'
     # target_url = 'http://d.weibo.com/100803?from=page_100803' \
     #              '&ajaxpagelet=1&__ref=/100803&_t=FM_'+timestamp
     target_url = 'http://d.weibo.com/100803?pids' \
@@ -52,19 +52,22 @@ def getPageList(page):
     #print target_url
     return htm
 
-# 参数
-timer = 2.0
-couter = 1 #运行小时数
-pageCout = 20
+#参数
+CounterTimer = 3600.0
+PagerTimer = 3.0
+couter = 24 #运行小时数
+pageCout = 4
+
 
 mop = MySQLOperator.MySQLOP()
 for i in range(0,couter):
     for j in range(0,pageCout):
         print '-----------------------------------------'
-        htm = getPageList(j+1)
+        curTimestamp = common.getCurrentTimeStamp()
+        htm = getPageList(j+1,curTimestamp)
         writeData(htm)
-        print 'couter:'+str(i)+' pager:'+str(j)
-        data = TopicRegex.startRegex(htm)
+        print '小时：'+str(i+1)+' pager:'+str(j+1)
+        data = TopicRegex.startRegex(htm,curTimestamp)
         print '-----------------------------------------'
         for k in range(0,len(data)):
             d_titleName = "'"+data[k]['d_titleName']+"'"
@@ -82,8 +85,42 @@ for i in range(0,couter):
 
             mop.ExcuteSQL(sql)
 
-        threading._sleep(timer)
+        threading._sleep(PagerTimer)
+    threading._sleep(CounterTimer)
 
 
 
 
+
+# # 构造24小时数据
+# sleepTime = 3.0
+# pageCount = 1
+# couterHour = 24
+#
+# #时间戳
+# t_timestamp = common.getTimeStampArrFromTime('2014-12-14 9:00:00',couterHour)
+# mop = MySQLOperator.MySQLOP()
+# for i in range(0,couterHour):
+#     for j in range(0,pageCount):
+#         print '-----------------------------------------'
+#         htm = getPageList(j+1,t_timestamp[i])
+#         print '小时：'+str(i+1)+' pager:'+str(j+1)
+#         data = TopicRegex.startRegex(htm,t_timestamp[i])
+#         print '-----------------------------------------'
+#         for k in range(0,len(data)):
+#             d_titleName = "'"+data[k]['d_titleName']+"'"
+#             d_rank = "'"+data[k]['d_rank']+"'"
+#             d_classify = "'"+data[k]['d_classify']+"'"
+#             d_timestamp = "'"+data[k]['d_timestamp']+"'"
+#             d_postManName = "'"+data[k]['d_postManName']+"'"
+#             d_postManLink = "'"+data[k]['d_postManLink']+"'"
+#             d_titleLink = "'"+data[k]['d_titleLink']+"'"
+#             d_haveRead = "'"+data[k]['d_haveRead']+"'"
+#
+#             sql = """INSERT INTO testtopiclist(d_titleName,
+#                  d_rank, d_classify, d_timestamp, d_postManName,d_postManLink,d_titleLink,d_haveRead)
+#                  VALUES ("""+d_titleName+""", """+d_rank+""", """+d_classify+""", """+d_timestamp+""", """+d_postManName+""", """+d_postManLink+""", """+d_titleLink+""", """+d_haveRead+""")"""
+#
+#             mop.ExcuteSQL(sql)
+#
+#         threading._sleep(sleepTime)
