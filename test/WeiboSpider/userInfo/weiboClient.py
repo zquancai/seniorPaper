@@ -3,8 +3,6 @@
 #      2、实例化，如a = APIClient()
 #      3、调用函数
 
-
-
 __version__ = '1.0.0'
 __author__ = 'Jack Li(britzlieg@gmail.com)'
 import urllib2
@@ -36,7 +34,7 @@ class APIClient:
         r_data = f.read().decode('utf-8')
         token_data = json.loads(r_data)["access_token"]
         self.saveToken(token_data)
-        print(r_data)
+        #print(r_data)
     def saveToken(self,token):
         f = open(access_token_file_path, 'w')
         f.write(token)
@@ -65,7 +63,7 @@ class APIClient:
                 else:
                     theURL = theURL + '&&'
             request = urllib2.Request(theURL)
-            print(theURL)
+            #print(theURL)
             try:
                 resdata = urllib2.urlopen(request).read().decode('utf-8')
                 codeInfo = successDict
@@ -132,4 +130,4 @@ class APIClient:
         thedata = reposedata['data']
         return thedata
 
-a = APIClient()
+

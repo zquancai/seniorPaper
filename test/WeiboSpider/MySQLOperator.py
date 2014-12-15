@@ -34,14 +34,21 @@ class MySQLOP:
            cursor.execute(sql)
            # 提交到数据库执行
            self.db.commit()
-           #print 'success'
+
         except:
            # Rollback in case there is any error
            self.db.rollback()
            print 'error:'+sql
 
-
-
-
-
+    def fetchArr(self,sql):
+        cursor = self.db.cursor()
+        try:
+            # 执行SQL语句
+            cursor.execute(sql)
+            # 获取所有记录列表
+            results = cursor.fetchall()
+            return results
+        except:
+           print 'error:'+sql
+           return None
 
