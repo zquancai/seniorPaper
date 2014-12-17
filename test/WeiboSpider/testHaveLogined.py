@@ -6,7 +6,6 @@ import urllib2
 import TopicRegex
 import common
 import threading
-import time
 import MySQLOperator
 import sys
 

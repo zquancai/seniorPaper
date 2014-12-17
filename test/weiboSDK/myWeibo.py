@@ -1,7 +1,8 @@
+# encoding: utf-8
 __version__ = '1.0.0'
 __author__ = 'Jack Li(britzlieg@gmail.com)'
-import urllib.parse
-import urllib.request
+import urllib
+import urllib2
 import json
 
 # 常数定义

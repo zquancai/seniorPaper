@@ -50,7 +50,7 @@ defaultUserList = transIntoStr(list(set(getExitUserIds())))
 
 
 counter = 0
-sleepTime = 2.0  # 调用sdk的不用设置睡眠时间
+sleepTime = 0.1  # 调用sdk的不用设置睡眠时间
 
 for row in topicUserList:
     counter = counter + 1
