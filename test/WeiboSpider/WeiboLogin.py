@@ -87,6 +87,8 @@ class WeiboLogin:
 
 
 
+
+
 if __name__ == '__main__':
     weiboLogin = WeiboLogin('2390635102@qq.com', '19920430')#邮箱（账号）、密码
     if weiboLogin.Login() == True:

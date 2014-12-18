@@ -1,5 +1,6 @@
 # encoding: utf-8
 # 记录转发关系
+# 不知道为什么要将cookie手动放入，路径问题暂时无法解决
 __author__ = 'stardust'
 import test.WeiboSpider.MySQLOperator
 import test.WeiboSpider.common
@@ -7,10 +8,11 @@ import urllib2
 import cookielib
 import re
 import json
+import threading
 
 import sys
 sys.path.append('C:\\Users\\stardust\\Desktop\\project\\seniorPaper\\test\\WeiboSpider')
-reload(sys)
+sys.path.append('../')
 
 
 cookie_savaPath = 'myLoginCookie.txt'
@@ -42,17 +44,20 @@ def getRepostHtml(w_id,pg):
     # htm = openData()
     return htm
 
-# 解析页面的htmlcell
-# def getRegexRepostCell(data):
-#     regex = """<div class="list_li S_line1 clearfix" mid="(.\d{0,30})" action-type="feed_list_item" >([\s\S]{0,3000})</div>"""
-#     p = re.compile(regex)
-#     res = p.findall(data)
-#
-#     cell_arr = []
-#     for i in range(0,len(res)):
-#         cell_data = res[i][1]
-#         cell_arr.append(cell_data)
-#     return cell_arr
+#获取转发的微博id
+def test_getMids(data):
+    regex = """<div class="list_li S_line1 clearfix" mid="(.\d{0,30})" action-type="feed_list_item" >"""
+    p = re.compile(regex)
+    res = p.findall(data)
+    mid_arr = []
+    # 含有热门推荐
+    if(len(res)>20):
+        for i in range(len(res)-20,len(res)):
+            mid_arr.append(res[i])
+    else:
+        for i in range(0,len(res)):
+            mid_arr.append(res[i])
+    return mid_arr
 
 # 获取总页数
 def test_getTotalPage(data):
@@ -114,7 +119,7 @@ def test_getRepostChild(text_arr):
             child_arr.append('')
         elif len(child_res) == 1:
             # 只有一个匹配项,二级转发
-            child_arr.append(child_res[0])
+            child_arr.append('@' + child_res[0] + '@')
         else:
             # 多个匹配项，多级转发
             childs_temp = ''
@@ -130,24 +135,58 @@ def test_getRepostChild(text_arr):
 def jsonToHtml(data):
     return json.loads(data)['data']['html']
 
-# page 1
-weibo_id = '3788546231751806'
-data = getRepostHtml(weibo_id,1)
-totalPage = test_getTotalPage(data)
 
-htmldata = jsonToHtml(data)
-name_arr = test_getName(htmldata)
-uids_arr = test_getUserId(htmldata)
-text_arr = test_getAddText(htmldata)
-childRepost_arr = test_getRepostChild(text_arr)
-for t in range(0,len(childRepost_arr)):
-    print childRepost_arr[t]
+def _getData(weibo_id):
+    # 参数
+    sleepTime = 0.0
 
-# for j in range(2,totalPage+1):
-#     temp_data = getRepostHtml(weibo_id,j)
-#     temp_data = jsonToHtml(temp_data)
-#     temp_name_arr = test_getName(temp_data)
-#     name_arr = name_arr + temp_name_arr
-#
-# for k in range(0,len(name_arr)):
-#     print "第"+str(k+1)+"个 ："+name_arr[k]
+    # page 1
+    data = getRepostHtml(weibo_id,1)
+    totalPage = test_getTotalPage(data)
+    # 解析json
+    htmldata = jsonToHtml(data)
+
+    mids_arr = test_getMids(htmldata)
+    name_arr = test_getName(htmldata)
+    uids_arr = test_getUserId(htmldata)
+    text_arr = test_getAddText(htmldata)
+    childRepost_arr = test_getRepostChild(text_arr)
+
+
+    for j in range(2,totalPage+1):
+        temp_data = getRepostHtml(weibo_id,j)
+        temp_data = jsonToHtml(temp_data)
+        temp_name_arr = test_getName(temp_data)
+        temp_uids_arr = test_getUserId(temp_data)
+        temp_text_arr = test_getAddText(temp_data)
+        temp_childRepost_arr = test_getRepostChild(temp_text_arr)
+        temp_mids_arr = test_getMids(temp_data)
+
+        name_arr = name_arr + temp_name_arr
+        uids_arr = uids_arr + temp_uids_arr
+        childRepost_arr = childRepost_arr + temp_childRepost_arr
+        mids_arr = mids_arr + temp_mids_arr
+
+        threading._sleep(sleepTime)
+
+    return name_arr,uids_arr,childRepost_arr,mids_arr
+
+
+def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
+    mop = test.WeiboSpider.MySQLOperator.MySQLOP()
+    weibo_id = "'"+weibo_id+"'"
+    for i in range(len(names_arr)):
+        name = "'"+names_arr[i]+"'"
+        uid = "'"+uids_arr[i]+"'"
+        repost = "'"+childRepost_arr[i]+"'"
+        mid = "'"+mid_arr[i]+"'"
+        sql = """INSERT INTO testrepostrelation(weibo_id,reposterName,repostRelation,reposterId,mid)
+                 VALUES ("""+weibo_id+""","""+name+""","""+repost+""","""+uid+""","""+mid+""")"""
+        mop.ExcuteSQL(sql)
+    print 'done...'
+
+
+# 微博id
+v_id = '3789065025386206'
+name_arr,uid_arr,childRepost_arr,mid_arr = _getData(v_id)
+insertData(name_arr,v_id,uid_arr,childRepost_arr,mid_arr)
