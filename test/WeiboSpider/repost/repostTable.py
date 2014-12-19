@@ -110,7 +110,9 @@ def test_getAddText(data):
 # 获取转发子节点
 def test_getRepostChild(text_arr):
     child_arr = []
-    regex = '>@(.{0,50})</a>'
+    #regex = '>@(.{0,50})</a>'
+    regex = '//<a target="_blank" render="ext" extra-data="type=atname" (.{0,120})>@(.{0,50})</a>'
+    #regex = '//<a target="_blank" render="ext" extra-data="type=atname" (.{0,120})'
     p = re.compile(regex)
     for i in range(0,len(text_arr)):
         child_res = p.findall(text_arr[i])
@@ -119,12 +121,12 @@ def test_getRepostChild(text_arr):
             child_arr.append('')
         elif len(child_res) == 1:
             # 只有一个匹配项,二级转发
-            child_arr.append('@' + child_res[0] + '@')
+            child_arr.append('@' + child_res[0][1] + '@')
         else:
             # 多个匹配项，多级转发
             childs_temp = ''
             for j in range(0,len(child_res)):
-                childs_temp = childs_temp + '@' + child_res[j] + '@'
+                childs_temp = childs_temp + '@' + child_res[j][1] + '@'
             child_arr.append(childs_temp)
     return child_arr
 

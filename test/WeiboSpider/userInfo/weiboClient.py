@@ -130,4 +130,9 @@ class APIClient:
         thedata = reposedata['data']
         return thedata
 
+    def getWeiboInfoFromWeiboMid(self,mid):
+        url = 'https://api.weibo.com/2/statuses/show.json'
+        dict = {'access_token':self.getToken(),'id':mid}
+        reposedata = self.reqTpl(url,dict,'get')
+        return reposedata
 
