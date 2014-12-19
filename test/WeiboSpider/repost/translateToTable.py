@@ -3,6 +3,7 @@
 __author__ = 'stardust'
 import test.WeiboSpider.MySQLOperator
 import re
+import json
 
 def getDataFromDB():
     sql = """SELECT * FROM testrepostrelation"""
@@ -51,7 +52,7 @@ def insertIntoSQLDB(rName,data_list):
             parentuserName = rootUserName
         else:
             # 多重转发
-            regex = '@(.{0,30})@'
+            regex = '@([^@]{0,30})@'
             p = re.compile(regex)
             res = p.findall(parentuserName)
             if len(res)>0:
@@ -69,12 +70,24 @@ def insertIntoSQLDB(rName,data_list):
         mop = MySQLOperator.MySQLOP()
         mop.ExcuteSQL(sql)
 
+def getRootWeiboName(mid):
+    token = '2.009HsraD0vuTD36b3ccb26b1gs4dHE'
+    client = test.WeiboSpider.userInfo.weiboClient.APIClient()
+    data = client.getWeiboInfoFromWeiboMid(mid,token)
+    jdata = data['data']
+    name = str(json.loads(jdata)['user']['screen_name'])
+    return name
+
+def mainFunc():
+    # 生成转发表
+    data_list = getDataFromDB()
+    data_clean_list = buildWeiboPath(data_list)
+    rootUserName = getRootWeiboName(data_clean_list[0][1])
+    insertIntoSQLDB(rootUserName,data_clean_list)
 
 
-
-
-# 生成转发表
-data_list = getDataFromDB()
-data_clean_list = buildWeiboPath(data_list)
-rootUserName = '微博'
-insertIntoSQLDB(rootUserName,data_clean_list)
+# # 生成转发表
+# data_list = getDataFromDB()
+# data_clean_list = buildWeiboPath(data_list)
+# rootUserName = getRootWeiboName(data_clean_list[0][1])
+# insertIntoSQLDB(rootUserName,data_clean_list)

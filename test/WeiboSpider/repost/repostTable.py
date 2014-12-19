@@ -10,6 +10,8 @@ import re
 import json
 import threading
 
+
+
 import sys
 sys.path.append('C:\\Users\\stardust\\Desktop\\project\\seniorPaper\\test\\WeiboSpider')
 sys.path.append('../')
@@ -156,6 +158,7 @@ def _getData(weibo_id):
 
 
     for j in range(2,totalPage+1):
+        print '正在抓取第'+str(j) + "页数据"
         temp_data = getRepostHtml(weibo_id,j)
         temp_data = jsonToHtml(temp_data)
         temp_name_arr = test_getName(temp_data)
@@ -178,6 +181,7 @@ def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
     mop = test.WeiboSpider.MySQLOperator.MySQLOP()
     weibo_id = "'"+weibo_id+"'"
     for i in range(len(names_arr)):
+
         name = "'"+names_arr[i]+"'"
         uid = "'"+uids_arr[i]+"'"
         repost = "'"+childRepost_arr[i]+"'"
@@ -187,8 +191,8 @@ def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
         mop.ExcuteSQL(sql)
     print 'done...'
 
+def mainFunc(weiboId):
+    name_arr,uid_arr,childRepost_arr,mid_arr = _getData(weiboId)
+    insertData(name_arr,weiboId,uid_arr,childRepost_arr,mid_arr)
 
-# 微博id
-v_id = '3789065025386206'
-name_arr,uid_arr,childRepost_arr,mid_arr = _getData(v_id)
-insertData(name_arr,v_id,uid_arr,childRepost_arr,mid_arr)
+
