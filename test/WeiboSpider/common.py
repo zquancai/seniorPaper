@@ -3,6 +3,8 @@
 __author__ = 'stardust'
 
 import time
+import datetime
+
 
 def getCurrentTimeStamp():
     return str(int(time.time()))
@@ -17,4 +19,7 @@ def getTimeStampArrFromTime(dateAndTime,couterHour):
         # print str(i) + ' ' + str(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(aTimestamp)))
     return timeStampArr
 
-# getTimeStampArrFromTime_24h('2011-09-28 10:00:00')
+def sinaTime_to_timestamp(sinatime):
+    aTimestamp = time.mktime(time.strptime(sinatime,"%a %b %d %H:%M:%S +0800 %Y"))
+    return str(int(aTimestamp))
+

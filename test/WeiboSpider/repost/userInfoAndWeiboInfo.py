@@ -4,6 +4,7 @@ __author__ = 'stardust'
 
 import test.WeiboSpider.userInfo.weiboClient
 import test.WeiboSpider.MySQLOperator
+import test.WeiboSpider.common
 import json
 import threading
 import re
@@ -11,6 +12,29 @@ import re
 
 token = '2.009HsraD0vuTD36b3ccb26b1gs4dHE'
 token2 = '2.2.00q2V_yBokwG5Daeecafb2117KdAHC'
+
+
+# 获取地址数据
+def getAddressArr():
+    sql = '''SELECT distinct address,longitude,latitude FROM changelocation '''
+    mop = test.WeiboSpider.MySQLOperator.MySQLOP()
+    data = mop.fetchArr(sql)
+    return data
+
+
+# 获取经度
+def getJingDu(address_arr,address):
+    for i in range(0,len(address_arr)):
+        if address == address_arr[i][0]:
+            return str(address_arr[i][1])
+    return '0'
+
+# 获取纬度
+def getWeiDu(address_arr,address):
+    for i in range(0,len(address_arr)):
+        if address == address_arr[i][0]:
+            return str(address_arr[i][2])
+    return '0'
 
 # 时间格式转换工具
 def timeTranslator(atime):
@@ -35,7 +59,7 @@ def sourceTranslator(source):
         return ''
 
 
-def insertIntoWeiboStatusTable(jdata):
+def insertIntoWeiboStatusTable(jdata,address_arr):
     Latitude ="'"+''+"'"
     Longitude ="'"+''+"'"
     Geo = json.loads(jdata)['geo']
@@ -48,6 +72,8 @@ def insertIntoWeiboStatusTable(jdata):
         Geo = "'"+'geo'+"'"
     else:
         Geo =  "'"+''+"'"
+        Latitude = getWeiDu(address_arr,json.loads(jdata)['user']['location'])
+        Longitude = getJingDu(address_arr,json.loads(jdata)['user']['location'])
 
     StatusID = "'"+json.loads(jdata)['mid']+"'"
     UserID ="'"+str(json.loads(jdata)['user']['id'])+"'"
@@ -59,20 +85,22 @@ def insertIntoWeiboStatusTable(jdata):
     repostsCount = "'"+str(int(json.loads(jdata)['reposts_count']))+"'"
     commentsCount = "'"+str(int(json.loads(jdata)['comments_count']))+"'"
 
-    sql = """INSERT INTO statusinfo(StatusID, Latitude, Longitude,Geo, Address, Province, City, UserID, createdAt, text, source, favorited, retweetedStatusID, repostsCount, commentsCount)
-                 VALUES ("""+StatusID+""", """+Latitude+""", """+Longitude+""", """+Geo+""", """+Address+""", """+Province+""", """+City+""", """+UserID+""", """+createdAt+""", """+text+""", """+source+""", """+favorited+""", """+retweetedStatusID+""", """+repostsCount+""", """+commentsCount+""")"""
+    createAt_time = "'"+test.WeiboSpider.common.sinaTime_to_timestamp(timeTranslator(json.loads(jdata)['created_at']))+"'"
+
+    sql = """INSERT INTO statusinfo(StatusID, Latitude, Longitude,Geo, Address, Province, City, UserID, createdAt, text, source, favorited, retweetedStatusID, repostsCount, commentsCount,createAt_time)
+                 VALUES ("""+StatusID+""", """+Latitude+""", """+Longitude+""", """+Geo+""", """+Address+""", """+Province+""", """+City+""", """+UserID+""", """+createdAt+""", """+text+""", """+source+""", """+favorited+""", """+retweetedStatusID+""", """+repostsCount+""", """+commentsCount+""", """+createAt_time+""")"""
 
     test.WeiboSpider.MySQLOperator.MySQLOP().ExcuteSQL(sql)
     print 'status done'
 
-def insertIntoUserTable(jdata):
+def insertIntoUserTable(jdata,address_arr):
     UserID = "'"+str(json.loads(jdata)['user']['id'])+"'"
     Gender = "'"+str(json.loads(jdata)['user']['gender'])+"'"
-    createdAt ="'"+str(json.loads(jdata)['user']['created_at'])+"'"
+    createdAt ="'"+test.WeiboSpider.common.sinaTime_to_timestamp(str(json.loads(jdata)['user']['created_at']))+"'"
     ScreenName ="'"+str(json.loads(jdata)['user']['screen_name'])+"'"
     Location ="'"+str(json.loads(jdata)['user']['location'])+"'"
-    latitude ="'"+''+"'"
-    longitude ="'"+''+"'"
+    latitude ="'"+getWeiDu(address_arr,str(json.loads(jdata)['user']['location']))+"'"
+    longitude ="'"+getJingDu(address_arr,str(json.loads(jdata)['user']['location']))+"'"
     Description ="'"+str(json.loads(jdata)['user']['description'])+"'"
     Url = "'"+str(json.loads(jdata)['user']['url'])+"'"
     profileImageUrl = "'"+str(json.loads(jdata)['user']['profile_image_url'])+"'"
@@ -106,39 +134,42 @@ def getRootWeiboMid():
     return data
 
 # 获取根weibo信息
-def getRootWeiboInfo():
+def getRootWeiboInfo(address_arr):
     rootmid_arr = getRootWeiboMid()
     for i in range(0,len(rootmid_arr)):
         rootmid = rootmid_arr[i]
         data = getWeiboJsonData(rootmid,token)
         if data['code'] == '1':
             jdata = data['data']
-            insertIntoWeiboStatusTable(jdata)
-            insertIntoUserTable(jdata)
+            insertIntoWeiboStatusTable(jdata,address_arr)
+            insertIntoUserTable(jdata,address_arr)
         else:
             print 'root weibo have been deleted!!!!!'
             return
 
 
-def getChildWeiboInfo(start):
+def getChildWeiboInfo(start,address_arr):
     mid_arr = getWeiboMid()
     for i in range(start,len(mid_arr)):
         mid = mid_arr[i]
         data = getWeiboJsonData(mid,token)
         if data['code'] == '1':
             jdata = data['data']
-            insertIntoWeiboStatusTable(jdata)
-            insertIntoUserTable(jdata)
+            insertIntoWeiboStatusTable(jdata,address_arr)
+            insertIntoUserTable(jdata,address_arr)
         else:
             print "第 "+str(i+1)+" 个失败！"
             continue
-        print "--->第 "+str(i+1)+" 个！"
-        threading._sleep(0.5)
 
+        threading._sleep(0.5)
+        print "--->第 "+str(i+1)+" 个！"
 
 def mainFunc():
-    getRootWeiboInfo()
-    getChildWeiboInfo(0)
+    address_arr = getAddressArr()
+    getRootWeiboInfo(address_arr)
+    getChildWeiboInfo(0,address_arr)
+
+mainFunc()
 
 # # root node
 # getRootWeiboInfo()

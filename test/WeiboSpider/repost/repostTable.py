@@ -90,12 +90,16 @@ def test_getName(data):
         for i in range(len(res)-20,len(res)):
             name_arr.append(res[i])
     else:
+        # if len(res) < 20:
+        #     print data
+
         for i in range(0,len(res)):
             name_arr.append(res[i])
     return name_arr
 
 def test_getAddText(data):
-    text_regex = '<span node-type="text">(.{0,4000})</span>'
+    text_regex = """<span node-type="text">([\s\S]*?)</span>"""
+    #text_regex = '<span node-type="text">(.{0,20000})</span>'
     text_p = re.compile(text_regex)
     text_res = text_p.findall(data)
     # 过滤热门转发
@@ -105,6 +109,9 @@ def test_getAddText(data):
         for i in range(len(text_res)-20,len(text_res)):
             text_arr.append(text_res[i])
     else:
+        # if len(text_res) < 20:
+        #     print data
+
         for i in range(0,len(text_res)):
             text_arr.append(text_res[i])
     return text_arr
@@ -140,24 +147,15 @@ def jsonToHtml(data):
     return json.loads(data)['data']['html']
 
 
-def _getData(weibo_id):
+def _getData(weibo_id,fromPage):
     # 参数
     sleepTime = 0.0
 
     # page 1
     data = getRepostHtml(weibo_id,1)
     totalPage = test_getTotalPage(data)
-    # 解析json
-    htmldata = jsonToHtml(data)
 
-    mids_arr = test_getMids(htmldata)
-    name_arr = test_getName(htmldata)
-    uids_arr = test_getUserId(htmldata)
-    text_arr = test_getAddText(htmldata)
-    childRepost_arr = test_getRepostChild(text_arr)
-
-
-    for j in range(2,totalPage+1):
+    for j in range(fromPage,totalPage+1):
         print '正在抓取第'+str(j) + "页数据"
         temp_data = getRepostHtml(weibo_id,j)
         temp_data = jsonToHtml(temp_data)
@@ -167,21 +165,17 @@ def _getData(weibo_id):
         temp_childRepost_arr = test_getRepostChild(temp_text_arr)
         temp_mids_arr = test_getMids(temp_data)
 
-        name_arr = name_arr + temp_name_arr
-        uids_arr = uids_arr + temp_uids_arr
-        childRepost_arr = childRepost_arr + temp_childRepost_arr
-        mids_arr = mids_arr + temp_mids_arr
+        # 每爬一页插入一次
+        insertData(temp_name_arr,weibo_id,temp_uids_arr,temp_childRepost_arr,temp_mids_arr)
 
         threading._sleep(sleepTime)
 
-    return name_arr,uids_arr,childRepost_arr,mids_arr
 
 
 def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
     mop = test.WeiboSpider.MySQLOperator.MySQLOP()
     weibo_id = "'"+weibo_id+"'"
     for i in range(len(names_arr)):
-
         name = "'"+names_arr[i]+"'"
         uid = "'"+uids_arr[i]+"'"
         repost = "'"+childRepost_arr[i]+"'"
@@ -191,8 +185,8 @@ def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
         mop.ExcuteSQL(sql)
     print 'done...'
 
-def mainFunc(weiboId):
-    name_arr,uid_arr,childRepost_arr,mid_arr = _getData(weiboId)
-    insertData(name_arr,weiboId,uid_arr,childRepost_arr,mid_arr)
 
+def mainFunc(weiboId,fromPage):
+    _getData(weiboId,fromPage)
 
+mainFunc('3789806842405654',721)

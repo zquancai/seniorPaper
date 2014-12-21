@@ -48,6 +48,9 @@ class WeiboLogin:
             headers={'User-Agent':'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
             request = urllib2.Request(loginUrl, postdata, headers)
             ckjar = cookielib.MozillaCookieJar(cookie_savaPath)
+
+            ckjar = cookielib.MozillaCookieJar('repost/'+cookie_savaPath)
+
             ckproc = urllib2.HTTPCookieProcessor(ckjar)
             opener = urllib2.build_opener(ckproc)
             f = opener.open(request)

@@ -4,9 +4,10 @@ __author__ = 'stardust'
 import test.WeiboSpider.MySQLOperator
 import re
 import json
+import weiboClient
 
 def getDataFromDB():
-    sql = """SELECT * FROM testrepostrelation"""
+    sql = """SELECT * FROM testrepostrelation groupp by mid"""
     mop = test.WeiboSpider.MySQLOperator.MySQLOP()
     data_arr = mop.fetchArr(sql)
     data_list = []
@@ -72,7 +73,7 @@ def insertIntoSQLDB(rName,data_list):
 
 def getRootWeiboName(mid):
     token = '2.009HsraD0vuTD36b3ccb26b1gs4dHE'
-    client = test.WeiboSpider.userInfo.weiboClient.APIClient()
+    client = weiboClient.APIClient()
     data = client.getWeiboInfoFromWeiboMid(mid,token)
     jdata = data['data']
     name = str(json.loads(jdata)['user']['screen_name'])
@@ -84,6 +85,8 @@ def mainFunc():
     data_clean_list = buildWeiboPath(data_list)
     rootUserName = getRootWeiboName(data_clean_list[0][1])
     insertIntoSQLDB(rootUserName,data_clean_list)
+
+mainFunc()
 
 
 # # 生成转发表
