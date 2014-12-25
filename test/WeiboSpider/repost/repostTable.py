@@ -189,4 +189,4 @@ def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
 def mainFunc(weiboId,fromPage):
     _getData(weiboId,fromPage)
 
-mainFunc('3789806842405654',721)
+# mainFunc('3789806842405654',721)

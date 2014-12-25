@@ -44,29 +44,28 @@ def transIntoStr(unicode_Arr):
         arr.append(aStr)
     return arr
 
-# 获取用户数据
-topicUserList = transIntoStr(list(set(getTopicUserIds())))
-defaultUserList = transIntoStr(list(set(getExitUserIds())))
 
+def getUserInfo():
+    # 获取用户数据
+    topicUserList = transIntoStr(list(set(getTopicUserIds())))
+    defaultUserList = transIntoStr(list(set(getExitUserIds())))
+    counter = 0
+    sleepTime = 0.1  # 调用sdk的不用设置睡眠时间
+    for row in topicUserList:
+        counter = counter + 1
+        topic_uid = row
+        print "总共有"+str(len(topicUserList))+"个用户数据---->正在刷新第"+str(counter+1)+"个用户"
+        topic_uid = topic_uid.encode('ascii', 'ignore')
+        if topic_uid in defaultUserList:
+            print '---------------------------->'
+            continue
+        else:
+            aWeiboClient = weiboClient.APIClient()
+            u_info = aWeiboClient.getUserInfo(topic_uid)
+            insertUserInfo(topic_uid,u_info)
+            defaultUserList = getExitUserIds()
+        threading._sleep(sleepTime)
 
-counter = 0
-sleepTime = 0.1  # 调用sdk的不用设置睡眠时间
-
-for row in topicUserList:
-    counter = counter + 1
-    topic_uid = row
-    print "总共有"+str(len(topicUserList))+"个用户数据---->正在刷新第"+str(counter+1)+"个用户"
-    topic_uid = topic_uid.encode('ascii', 'ignore')
-    if topic_uid in defaultUserList:
-        print '---------------------------->'
-        continue
-    else:
-        aWeiboClient = weiboClient.APIClient()
-        u_info = aWeiboClient.getUserInfo(topic_uid)
-        insertUserInfo(topic_uid,u_info)
-        defaultUserList = getExitUserIds()
-    threading._sleep(sleepTime)
-
-
+getUserInfo()
 
 
