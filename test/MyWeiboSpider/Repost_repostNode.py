@@ -7,7 +7,7 @@ import json
 import weiboClient
 
 def getDataFromDB():
-    sql = """SELECT * FROM testrepostrelation groupp by mid"""
+    sql = """SELECT * FROM testrepostrelation group by mid"""
     mop = MySQLOperator.MySQLOP()
     data_arr = mop.fetchArr(sql)
     data_list = []
@@ -67,7 +67,6 @@ def insertIntoSQLDB(rName,data_list):
         #sql
         sql = """INSERT INTO relationship(rootstatusID,rootuserName,parentstatusID,parentuserName,selfstatusID,selfuserName)
                  VALUES ("""+rootstatusID+""","""+rootUserName+""","""+parentstatusID+""","""+parentuserName+""","""+selfstatusID+""","""+selfuserName+""")"""
-        MySQLOperator = MySQLOperator
         mop = MySQLOperator.MySQLOP()
         mop.ExcuteSQL(sql)
 

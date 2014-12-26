@@ -147,7 +147,7 @@ def jsonToHtml(data):
     return json.loads(data)['data']['html']
 
 
-def _getData(weibo_id,fromPage):
+def _getData(weibo_id,fromPage,ePage):
     # 参数
     sleepTime = 0.0
 
@@ -155,7 +155,12 @@ def _getData(weibo_id,fromPage):
     data = getRepostHtml(weibo_id,1)
     totalPage = test_getTotalPage(data)
 
-    for j in range(fromPage,totalPage+1):
+    endPage = totalPage
+    if ePage > 0:
+        endPage = ePage
+
+
+    for j in range(fromPage,endPage+1):
         print '正在抓取第'+str(j) + "页数据"
         temp_data = getRepostHtml(weibo_id,j)
         temp_data = jsonToHtml(temp_data)
@@ -186,7 +191,7 @@ def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
     print 'done...'
 
 
-def mainFunc(weiboId,fromPage):
-    _getData(weiboId,fromPage)
+def mainFunc(weiboId,fromPage,endPage):
+    _getData(weiboId,fromPage,endPage)
 
 # mainFunc('3789806842405654',721)

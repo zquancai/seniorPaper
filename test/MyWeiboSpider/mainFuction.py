@@ -31,9 +31,10 @@ def func(val):
 
     # 所有转发用户和微博
     elif val == 2:
-        mid = ''     # 微博id
+        mid = '3791808343355595'     # 微博id
         fromPage = 1 # 从第几页开始
-        Repost_repostTable.mainFunc(mid,fromPage)
+        endPage = -1 # 少于0为全部
+        Repost_repostTable.mainFunc(mid,fromPage,endPage)
         Repost_repostNode.mainFunc()
         Repost_userInfoAndWeiboInfo.mainFunc()
     else:
@@ -44,4 +45,4 @@ def func(val):
 Login_WeiboLogin.mainFunc()
 
 # 通过不同值调用func函数执行相关功能
-func(0)
+func(2)
