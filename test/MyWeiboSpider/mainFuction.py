@@ -31,18 +31,26 @@ def func(val):
 
     # 所有转发用户和微博
     elif val == 2:
-        mid = '3791808343355595'     # 微博id
-        fromPage = 1 # 从第几页开始
-        endPage = -1 # 少于0为全部
-        Repost_repostTable.mainFunc(mid,fromPage,endPage)
+        mids = ['3792721146228563','3792863789713311',
+                '3793017061814327','3792715437203513',
+                '3792732063042123']
+        for i in range(0,len(mids)):
+            mid = mids[i]     # 微博id
+            fromPage = 1 # 从第几页开始
+            endPage = -1 # 少于0为全部-1
+            betweenPage = 1 #隔页
+            Repost_repostTable.mainFunc(mid,fromPage,endPage,betweenPage)
+
         Repost_repostNode.mainFunc()
-        Repost_userInfoAndWeiboInfo.mainFunc()
+        # 先爬所有网页数据  然后再调
+        # api
+        #Repost_userInfoAndWeiboInfo.mainFunc()
     else:
         return
 
 
 # 登陆获取cookie
-Login_WeiboLogin.mainFunc()
+#Login_WeiboLogin.mainFunc()
 
 # 通过不同值调用func函数执行相关功能
 func(2)

@@ -53,7 +53,7 @@ class WeiboLogin:
             ckproc = urllib2.HTTPCookieProcessor(ckjar)
             opener = urllib2.build_opener(ckproc)
             f = opener.open(request)
-            htm = f.read().decode('utf-8')
+            htm = f.read()
             f.close()
             ckjar.save(ignore_discard=True, ignore_expires=True)
         except:

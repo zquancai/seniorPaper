@@ -10,8 +10,8 @@ import threading
 import re
 
 
-token = '2.009HsraD0vuTD36b3ccb26b1gs4dHE'
-token2 = '2.2.00q2V_yBokwG5Daeecafb2117KdAHC'
+token2 = '2.009HsraD0vuTD36b3ccb26b1gs4dHE'
+token = '2.009HsraDigyO3Bcfc27562c30xrfIr'
 
 
 # 获取地址数据
@@ -60,9 +60,13 @@ def sourceTranslator(source):
 
 
 def insertIntoWeiboStatusTable(jdata,address_arr):
+    if jdata == '{}':
+        print '无法获取微博数据'
+        return
+
     Latitude ="'"+''+"'"
     Longitude ="'"+''+"'"
-    Geo = json.loads(jdata)['geo']
+    Geo = ''#json.loads(jdata)['geo']
     Address ="'"+json.loads(jdata)['user']['location']+"'"
     Province ="'"+json.loads(jdata)['user']['province']+"'"
     City ="'"+json.loads(jdata)['user']['city']+"'"
@@ -94,6 +98,9 @@ def insertIntoWeiboStatusTable(jdata,address_arr):
     print 'status done'
 
 def insertIntoUserTable(jdata,address_arr):
+    if jdata == '{}':
+        print '无法获取user数据'
+        return
     UserID = "'"+str(json.loads(jdata)['user']['id'])+"'"
     Gender = "'"+str(json.loads(jdata)['user']['gender'])+"'"
     createdAt ="'"+common.sinaTime_to_timestamp(str(json.loads(jdata)['user']['created_at']))+"'"
@@ -138,6 +145,11 @@ def getRootWeiboInfo(address_arr):
     rootmid_arr = getRootWeiboMid()
     for i in range(0,len(rootmid_arr)):
         rootmid = rootmid_arr[i]
+        # 判断根微博id是否已经存在微博表中
+        db_data = getAllWeiboFromDB()
+        if rootmid in db_data:
+            continue
+
         data = getWeiboJsonData(rootmid,token)
         if data['code'] == '1':
             jdata = data['data']
@@ -152,22 +164,49 @@ def getChildWeiboInfo(start,address_arr):
     mid_arr = getWeiboMid()
     for i in range(start,len(mid_arr)):
         mid = mid_arr[i]
+        # 判断根微博id是否已经存在微博表中
+        db_data = getAllWeiboFromDB()
+        if mid in db_data:
+            continue
+
         data = getWeiboJsonData(mid,token)
         if data['code'] == '1':
             jdata = data['data']
             insertIntoWeiboStatusTable(jdata,address_arr)
             insertIntoUserTable(jdata,address_arr)
         else:
-            print "第 "+str(i+1)+" 个失败！"
-            continue
+            data2 = getWeiboJsonData(mid,token2)
+            if data2['code'] == '1':
+                jdata = data['data']
+                insertIntoWeiboStatusTable(jdata,address_arr)
+                insertIntoUserTable(jdata,address_arr)
+            else:
+                print "第 "+str(i+1)+" 个失败！"
+
 
         threading._sleep(0.5)
         print "--->第 "+str(i+1)+" 个！"
+
+# 从数据库中读取所有用户信息
+def getAllUsersFromDB():
+    print '获取All用户信息...'
+    sql = '''SELECT distinct UserID FROM userinfo '''
+    mop = MySQLOperator.MySQLOP()
+    data = mop.fetchArr(sql)
+    return data
+
+# 从数据库中读取所有微博信息
+def getAllWeiboFromDB():
+    print '获取All微博信息。。。'
+    sql = '''SELECT distinct StatusID FROM statusinfo '''
+    mop = MySQLOperator.MySQLOP()
+    data = mop.fetchArr(sql)
+    return data
+
 
 def mainFunc():
     address_arr = getAddressArr()
     getRootWeiboInfo(address_arr)
     # 从第几个用户开始
     getChildWeiboInfo(0,address_arr)
-
 

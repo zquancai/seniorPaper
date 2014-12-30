@@ -147,7 +147,7 @@ def jsonToHtml(data):
     return json.loads(data)['data']['html']
 
 
-def _getData(weibo_id,fromPage,ePage):
+def _getData(weibo_id,fromPage,ePage,bPage):
     # 参数
     sleepTime = 0.0
 
@@ -161,17 +161,25 @@ def _getData(weibo_id,fromPage,ePage):
 
 
     for j in range(fromPage,endPage+1):
-        print '正在抓取第'+str(j) + "页数据"
-        temp_data = getRepostHtml(weibo_id,j)
-        temp_data = jsonToHtml(temp_data)
-        temp_name_arr = test_getName(temp_data)
-        temp_uids_arr = test_getUserId(temp_data)
-        temp_text_arr = test_getAddText(temp_data)
-        temp_childRepost_arr = test_getRepostChild(temp_text_arr)
-        temp_mids_arr = test_getMids(temp_data)
 
-        # 每爬一页插入一次
-        insertData(temp_name_arr,weibo_id,temp_uids_arr,temp_childRepost_arr,temp_mids_arr)
+        # 两页之间隔多少页
+        if j % (bPage+1) != 0:
+            print '跳页'+str(j)
+        try:
+            print '微博id:'+weibo_id
+            print common.getCurrentTimeStamp()+'  正在抓取第'+str(j) + "页数据"
+            temp_data = getRepostHtml(weibo_id,j)
+            temp_data = jsonToHtml(temp_data)
+            temp_name_arr = test_getName(temp_data)
+            temp_uids_arr = test_getUserId(temp_data)
+            temp_text_arr = test_getAddText(temp_data)
+            temp_childRepost_arr = test_getRepostChild(temp_text_arr)
+            temp_mids_arr = test_getMids(temp_data)
+
+            # 每爬一页插入一次
+            insertData(temp_name_arr,weibo_id,temp_uids_arr,temp_childRepost_arr,temp_mids_arr)
+        except:
+            print '抓取失败'
 
         threading._sleep(sleepTime)
 
@@ -191,7 +199,6 @@ def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
     print 'done...'
 
 
-def mainFunc(weiboId,fromPage,endPage):
-    _getData(weiboId,fromPage,endPage)
+def mainFunc(weiboId,fromPage,endPage,betweenPage):
+    _getData(weiboId,fromPage,endPage,betweenPage)
 
-# mainFunc('3789806842405654',721)
