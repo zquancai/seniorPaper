@@ -41,10 +41,12 @@ def func(val):
             betweenPage = 1 #隔页
             Repost_repostTable.mainFunc(mid,fromPage,endPage,betweenPage)
 
+    elif val == 3:
         Repost_repostNode.mainFunc()
-        # 先爬所有网页数据  然后再调
-        # api
-        #Repost_userInfoAndWeiboInfo.mainFunc()
+
+    elif val == 4:
+        Repost_userInfoAndWeiboInfo.mainFunc()
+
     else:
         return
 
@@ -53,4 +55,4 @@ def func(val):
 #Login_WeiboLogin.mainFunc()
 
 # 通过不同值调用func函数执行相关功能
-func(2)
+func(4)

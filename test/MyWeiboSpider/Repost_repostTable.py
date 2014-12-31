@@ -38,7 +38,7 @@ def getRepostHtml(w_id,pg):
     ckjar = cookielib.MozillaCookieJar(cookie_savaPath)
     ckjar.load(ignore_discard=True, ignore_expires=True)
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(ckjar))
-    f = opener.open(request)
+    f = opener.open(request, timeout=5)
     htm = f.read()
     f.close()
     writeData(htm)
@@ -165,6 +165,7 @@ def _getData(weibo_id,fromPage,ePage,bPage):
         # 两页之间隔多少页
         if j % (bPage+1) != 0:
             print '跳页'+str(j)
+            continue
         try:
             print '微博id:'+weibo_id
             print common.getCurrentTimeStamp()+'  正在抓取第'+str(j) + "页数据"

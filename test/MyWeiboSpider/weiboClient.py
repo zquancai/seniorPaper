@@ -65,7 +65,7 @@ class APIClient:
             request = urllib2.Request(theURL)
             #print(theURL)
             try:
-                resdata = urllib2.urlopen(request).read().decode('utf-8')
+                resdata = urllib2.urlopen(request, timeout=5).read().decode('utf-8')
                 codeInfo = successDict
             except:
                 codeInfo = errorDict

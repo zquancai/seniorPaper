@@ -143,10 +143,10 @@ def getRootWeiboMid():
 # 获取根weibo信息
 def getRootWeiboInfo(address_arr):
     rootmid_arr = getRootWeiboMid()
+    # 判断根微博id是否已经存在微博表中
+    db_data = getAllWeiboFromDB()
     for i in range(0,len(rootmid_arr)):
         rootmid = rootmid_arr[i]
-        # 判断根微博id是否已经存在微博表中
-        db_data = getAllWeiboFromDB()
         if rootmid in db_data:
             continue
 
@@ -177,7 +177,7 @@ def getChildWeiboInfo(start,address_arr):
         else:
             data2 = getWeiboJsonData(mid,token2)
             if data2['code'] == '1':
-                jdata = data['data']
+                jdata = data2['data']
                 insertIntoWeiboStatusTable(jdata,address_arr)
                 insertIntoUserTable(jdata,address_arr)
             else:
