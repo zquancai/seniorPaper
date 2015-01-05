@@ -70,14 +70,9 @@ def insertIntoWeiboStatusTable(jdata,address_arr):
     Address ="'"+json.loads(jdata)['user']['location']+"'"
     Province ="'"+json.loads(jdata)['user']['province']+"'"
     City ="'"+json.loads(jdata)['user']['city']+"'"
-    if Geo != None:
-        Latitude = '1.1'
-        Longitude ='1.1'
-        Geo = "'"+'geo'+"'"
-    else:
-        Geo =  "'"+''+"'"
-        Latitude = getWeiDu(address_arr,json.loads(jdata)['user']['location'])
-        Longitude = getJingDu(address_arr,json.loads(jdata)['user']['location'])
+    Geo =  "'"+''+"'"
+    Latitude = getWeiDu(address_arr,json.loads(jdata)['user']['location'])
+    Longitude = getJingDu(address_arr,json.loads(jdata)['user']['location'])
 
     StatusID = "'"+json.loads(jdata)['mid']+"'"
     UserID ="'"+str(json.loads(jdata)['user']['id'])+"'"
@@ -210,3 +205,26 @@ def mainFunc():
     # 从第几个用户开始
     getChildWeiboInfo(0,address_arr)
 
+address_arr = getAddressArr()
+
+sql = '''SELECT StatusID,Address FROM statusinfo '''
+mop = MySQLOperator.MySQLOP()
+data = mop.fetchArr(sql)
+
+res_arr = []
+dataLen = len(data)
+
+for i in range(0,dataLen):
+    jingdu = getJingDu(address_arr,data[i][1])
+    weidu = getWeiDu(address_arr,data[i][1])
+    item = []
+    item.append("'"+data[i][0]+"'")
+    item.append("'"+jingdu+"'")
+    item.append("'"+weidu+"'")
+    res_arr.append(item)
+
+for j in range(0,len(res_arr)):
+    item = res_arr[j]
+    update_sql = '''UPDATE statusinfo SET Latitude='''+ item[1] +''',Longitude=''' + item[2] + ''' WHERE StatusID=''' + item[0]
+    mop = MySQLOperator.MySQLOP()
+    mop.ExcuteSQL(update_sql)
