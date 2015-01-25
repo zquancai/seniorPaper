@@ -8,9 +8,23 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+def fmt(row):
+    return row
+
+def singleRow(aArrary,rowsLen,j):
+    rowsStr = "("
+    for k in range(0,rowsLen):
+        if k == 0:
+            rowsStr = rowsStr + fmt(aArrary[j][k])
+        else:
+            rowsStr = rowsStr + "," + fmt(aArrary[j][k])
+    rowsStr = rowsStr + ")"
+    return rowsStr
+
 class MySQLOP:
 
     db = None
+    sql = None
 
     def __init__(self):
         print 'initial...'
@@ -51,4 +65,30 @@ class MySQLOP:
         except:
            print 'error:'+sql
            return None
+
+    def insertWithTableAndArr(self,aTable,aRows,aArrary,aNumLimit):
+        sql_tp1_1 = """INSERT INTO """ + aTable
+        # 字段
+        rowsLen = len(aRows)
+        ziduan = ''
+        for i in range(0,rowsLen):
+            if i == 0:
+                ziduan = aRows[0]
+            else:
+                ziduan = ziduan + ',' + aRows[i]
+        sql_tp1_2 = "("+ziduan+")" + "VALUES"
+        # 字段值
+        rowsStr = ''
+        for j in range(0,len(aArrary)):
+            if j % aNumLimit == 0:
+                rowsStr = singleRow(aArrary,rowsLen,j)
+            else:
+                rowsStr = rowsStr + "," + singleRow(aArrary,rowsLen,j)
+        sql_tp1_3 = rowsStr
+        # 拼接
+        sql_tpl = sql_tp1_1 + sql_tp1_2 + sql_tp1_3
+        # 执行
+        self.ExcuteSQL(sql_tpl)
+
+
 

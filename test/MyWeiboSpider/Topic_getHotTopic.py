@@ -58,8 +58,15 @@ def getHotTopic():
     couter = 24 #运行小时数
     pageCout = 4
     mop = MySQLOperator.MySQLOP()
+
+    table = "testtopiclist"
+    numberLimit = 100
+    rows = ["d_titleName","d_rank", "d_classify", "d_timestamp", "d_postManName","d_postManLink","d_titleLink","d_haveRead"]
+    dataArr = []
+
     for i in range(0,couter):
         for j in range(0,pageCout):
+            dataArr = []
             print '-----------------------------------------'
             curTimestamp = common.getCurrentTimeStamp()
             htm = getPageList(j+1,curTimestamp)
@@ -77,11 +84,15 @@ def getHotTopic():
                 d_titleLink = "'"+data[k]['d_titleLink']+"'"
                 d_haveRead = "'"+data[k]['d_haveRead']+"'"
 
-                sql = """INSERT INTO testtopiclist(d_titleName,
-                     d_rank, d_classify, d_timestamp, d_postManName,d_postManLink,d_titleLink,d_haveRead)
-                     VALUES ("""+d_titleName+""", """+d_rank+""", """+d_classify+""", """+d_timestamp+""", """+d_postManName+""", """+d_postManLink+""", """+d_titleLink+""", """+d_haveRead+""")"""
+                singleArr = [d_titleName,d_rank, d_classify, d_timestamp, d_postManName,d_postManLink,d_titleLink,d_haveRead]
+                dataArr.append(singleArr)
 
-                mop.ExcuteSQL(sql)
+                # sql = """INSERT INTO testtopiclist(d_titleName,
+                #      d_rank, d_classify, d_timestamp, d_postManName,d_postManLink,d_titleLink,d_haveRead)
+                #      VALUES ("""+d_titleName+""", """+d_rank+""", """+d_classify+""", """+d_timestamp+""", """+d_postManName+""", """+d_postManLink+""", """+d_titleLink+""", """+d_haveRead+""")"""
+                #
+                # mop.ExcuteSQL(sql)
+            mop.insertWithTableAndArr(table,rows,dataArr,numberLimit)
             threading._sleep(PagerTimer)
         threading._sleep(CounterTimer)
 

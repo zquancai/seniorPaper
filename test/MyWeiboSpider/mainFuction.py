@@ -46,13 +46,14 @@ def func(val):
 
     elif val == 4:
         Repost_userInfoAndWeiboInfo.mainFunc()
-
+    elif val == 0:
+        # 登陆获取cookie,这个方法不一定可以，要看运行之后有没报错，还有就是myLoginCookie.txt文件是否有问题
+        Login_WeiboLogin.mainFunc()
     else:
         return
 
 
-# 登陆获取cookie
-#Login_WeiboLogin.mainFunc()
+
 
 # 通过不同值调用func函数执行相关功能
-func(4)
+func(1)
