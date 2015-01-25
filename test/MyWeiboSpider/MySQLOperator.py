@@ -63,7 +63,7 @@ class MySQLOP:
             results = cursor.fetchall()
             return results
         except:
-           print 'error:'+sql
+           print 'error:'
            return None
 
     def insertWithTableAndArr(self,aTable,aRows,aArrary,aNumLimit):
@@ -80,15 +80,18 @@ class MySQLOP:
         # 字段值
         rowsStr = ''
         for j in range(0,len(aArrary)):
-            if j % aNumLimit == 0:
+            if j == 0:  # 第一个
+                rowsStr = singleRow(aArrary,rowsLen,j)
+            elif ((j % aNumLimit == 0)and(j != 0)):  # 到达设定的最大值
+                sql_tp1_3 = rowsStr
+                # 拼接
+                sql_tpl = sql_tp1_1 + sql_tp1_2 + sql_tp1_3
+                # 执行
+                self.ExcuteSQL(sql_tpl)
                 rowsStr = singleRow(aArrary,rowsLen,j)
             else:
                 rowsStr = rowsStr + "," + singleRow(aArrary,rowsLen,j)
-        sql_tp1_3 = rowsStr
-        # 拼接
-        sql_tpl = sql_tp1_1 + sql_tp1_2 + sql_tp1_3
-        # 执行
-        self.ExcuteSQL(sql_tpl)
+
 
 
 

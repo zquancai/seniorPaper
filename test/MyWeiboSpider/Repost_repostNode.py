@@ -38,6 +38,10 @@ def buildWeiboPath(data_list):
     return new_data_list
 
 def insertIntoSQLDB(rName,data_list):
+    table = "relationship"
+    numberLimit = 100
+    rows = ["rootstatusID","rootuserName","parentstatusID","parentuserName","selfstatusID","selfuserName"]
+    dataArr = []
     for i in range(0,len(data_list)):
         rootstatusID ="'" + data_list[i][1] + "'"
         rootUserName = "'" + rName +"'"
@@ -65,10 +69,16 @@ def insertIntoSQLDB(rName,data_list):
         selfuserName = "'"+data_list[i][2]+"'"
 
         #sql
-        sql = """INSERT INTO relationship(rootstatusID,rootuserName,parentstatusID,parentuserName,selfstatusID,selfuserName)
-                 VALUES ("""+rootstatusID+""","""+rootUserName+""","""+parentstatusID+""","""+parentuserName+""","""+selfstatusID+""","""+selfuserName+""")"""
-        mop = MySQLOperator.MySQLOP()
-        mop.ExcuteSQL(sql)
+        # sql = """INSERT INTO relationship(rootstatusID,rootuserName,parentstatusID,parentuserName,selfstatusID,selfuserName)
+        #          VALUES ("""+rootstatusID+""","""+rootUserName+""","""+parentstatusID+""","""+parentuserName+""","""+selfstatusID+""","""+selfuserName+""")"""
+        # mop = MySQLOperator.MySQLOP()
+        # mop.ExcuteSQL(sql)
+
+        singleArr = [rootstatusID,rootUserName,parentstatusID,parentuserName,selfstatusID,selfuserName]
+        dataArr.append(singleArr)
+    mop = MySQLOperator.MySQLOP()
+    mop.insertWithTableAndArr(table,rows,dataArr,numberLimit)
+
 
 def getRootWeiboName(mid):
     token = '2.009HsraD0vuTD36b3ccb26b1gs4dHE'

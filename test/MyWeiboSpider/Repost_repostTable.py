@@ -189,14 +189,24 @@ def _getData(weibo_id,fromPage,ePage,bPage):
 def insertData(names_arr,weibo_id,uids_arr,childRepost_arr,mid_arr):
     mop = MySQLOperator.MySQLOP()
     weibo_id = "'"+weibo_id+"'"
+
+    table = "testrepostrelation"
+    numberLimit = 100
+    rows = ["weibo_id","reposterName","repostRelation","reposterId","mid"]
+    dataArr = []
+
     for i in range(len(names_arr)):
         name = "'"+names_arr[i]+"'"
         uid = "'"+uids_arr[i]+"'"
         repost = "'"+childRepost_arr[i]+"'"
         mid = "'"+mid_arr[i]+"'"
-        sql = """INSERT INTO testrepostrelation(weibo_id,reposterName,repostRelation,reposterId,mid)
-                 VALUES ("""+weibo_id+""","""+name+""","""+repost+""","""+uid+""","""+mid+""")"""
-        mop.ExcuteSQL(sql)
+        # sql = """INSERT INTO testrepostrelation(weibo_id,reposterName,repostRelation,reposterId,mid)
+        #          VALUES ("""+weibo_id+""","""+name+""","""+repost+""","""+uid+""","""+mid+""")"""
+        # mop.ExcuteSQL(sql)
+        singleArr = [weibo_id,name,repost,uid,mid]
+        dataArr.append(singleArr)
+
+    mop.insertWithTableAndArr(table,rows,dataArr,numberLimit)
     print 'done...'
 
 
