@@ -85,9 +85,10 @@ def insertIntoWeiboStatusTable(jdata,address_arr):
     commentsCount = "'"+str(int(json.loads(jdata)['comments_count']))+"'"
 
     createAt_time = "'"+common.sinaTime_to_timestamp(timeTranslator(json.loads(jdata)['created_at']))+"'"
+    status_json = "'"+jdata+"'"
 
-    sql = """INSERT INTO statusinfo(StatusID, Latitude, Longitude,Geo, Address, Province, City, UserID, createdAt, text, source, favorited, retweetedStatusID, repostsCount, commentsCount,createAt_time)
-                 VALUES ("""+StatusID+""", """+Latitude+""", """+Longitude+""", """+Geo+""", """+Address+""", """+Province+""", """+City+""", """+UserID+""", """+createdAt+""", """+text+""", """+source+""", """+favorited+""", """+retweetedStatusID+""", """+repostsCount+""", """+commentsCount+""", """+createAt_time+""")"""
+    sql = """INSERT INTO statusinfo(StatusID, Latitude, Longitude,Geo, Address, Province, City, UserID, createdAt, text, source, favorited, retweetedStatusID, repostsCount, commentsCount,createAt_time,status_json)
+                 VALUES ("""+StatusID+""", """+Latitude+""", """+Longitude+""", """+Geo+""", """+Address+""", """+Province+""", """+City+""", """+UserID+""", """+createdAt+""", """+text+""", """+source+""", """+favorited+""", """+retweetedStatusID+""", """+repostsCount+""", """+commentsCount+""", """+createAt_time+""","""+status_json+""")"""
 
     MySQLOperator.MySQLOP().ExcuteSQL(sql)
     print 'status done'
@@ -113,8 +114,10 @@ def insertIntoUserTable(jdata,address_arr):
     avatarLarge = "'"+str(json.loads(jdata)['user']['avatar_large'])+"'"
     onlineStatus = "'"+''+"'"
     originalStatusID = "'"+''+"'"
-    sql = """INSERT INTO userinfo(UserID, Gender, createdAt, ScreenName, Location, latitude, longitude, Description, Url, profileImageUrl, followersCount, friendsCount, statusesCount, followMe, avatarLarge, onlineStatus, originalStatusID)
-                 VALUES ("""+UserID+""", """+Gender+""", """+createdAt+""", """+ScreenName+""", """+Location+""", """+latitude+""", """+longitude+""", """+Description+""", """+Url+""", """+profileImageUrl+""", """+followersCount+""", """+friendsCount+""", """+statusesCount+""", """+followMe+""", """+avatarLarge+""","""+onlineStatus+""", """+originalStatusID+""")"""
+    userinfo_json = "'"+jdata.repl+"'"
+
+    sql = """INSERT INTO userinfo(UserID, Gender, createdAt, ScreenName, Location, latitude, longitude, Description, Url, profileImageUrl, followersCount, friendsCount, statusesCount, followMe, avatarLarge, onlineStatus, originalStatusID,userinfo_json)
+                 VALUES ("""+UserID+""", """+Gender+""", """+createdAt+""", """+ScreenName+""", """+Location+""", """+latitude+""", """+longitude+""", """+Description+""", """+Url+""", """+profileImageUrl+""", """+followersCount+""", """+friendsCount+""", """+statusesCount+""", """+followMe+""", """+avatarLarge+""","""+onlineStatus+""", """+originalStatusID+""","""+userinfo_json+""")"""
     MySQLOperator.MySQLOP().ExcuteSQL(sql)
     print 'user done'
 
