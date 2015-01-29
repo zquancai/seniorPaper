@@ -23,6 +23,15 @@ access_token_file_path = 'token.txt'  #保存的token文件，需要手动输入
 errorDict = {'code':'-1'}
 successDict = {'code':'1'}
 
+# 获取代理服务器地址
+import MySQLOperator
+def getProxyServerList():
+    sql = '''SELECT distinct ip,proxy FROM proxylist '''
+    mop = MySQLOperator.MySQLOP()
+    data = mop.fetchArr(sql)
+    return data
+
+
 class APIClient:
     # 认证函数，暂时不需要
     def getAUTHORIZE(self):
@@ -50,35 +59,50 @@ class APIClient:
         data = None
         codeInfo = None
         resdata = '{}'
-        if type == 'get':
-            length = len(dict.keys())
-            counter = 0
-            if length > 0:
-                theURL = theURL + '?'
-            for key in dict.keys():
-                theURL = theURL + '%s=%s'%(key,dict[key])
-                counter = counter + 1
-                if counter == length:
-                    pass
-                else:
-                    theURL = theURL + '&&'
-            request = urllib2.Request(theURL)
-            #print(theURL)
-            try:
-                resdata = urllib2.urlopen(request, timeout=5).read().decode('utf-8')
-                codeInfo = successDict
-            except:
-                codeInfo = errorDict
-        elif type == 'post':
-            postdata = None
-            for key in dict.keys():
-                 postdata = urllib.urlencode({key,dict[key]})
-            request = urllib2.Request(theURL)
-            try:
-                resdata = urllib2.urlopen(request,postdata).read().decode('utf-8')
-                codeInfo = successDict
-            except:
-                codeInfo = errorDict
+        proxyServerArr = getProxyServerList()
+
+        for k in range(0,len(proxyServerArr)):
+            proxy = urllib2.ProxyHandler({'http': proxyServerArr[k][0]})
+            opener = urllib2.build_opener(proxy)
+            urllib2.install_opener(opener)
+
+            if type == 'get':
+                length = len(dict.keys())
+                counter = 0
+                if length > 0:
+                    theURL = theURL + '?'
+                for key in dict.keys():
+                    theURL = theURL + '%s=%s'%(key,dict[key])
+                    counter = counter + 1
+                    if counter == length:
+                        pass
+                    else:
+                        theURL = theURL + '&&'
+
+
+                request = urllib2.Request(theURL)
+                #print(theURL)
+                try:
+                    resdata = urllib2.urlopen(request, timeout=5).read().decode('utf-8')
+                    codeInfo = successDict
+                except:
+                    codeInfo = errorDict
+
+            elif type == 'post':
+                postdata = None
+                for key in dict.keys():
+                     postdata = urllib.urlencode({key,dict[key]})
+                request = urllib2.Request(theURL)
+                try:
+                    resdata = urllib2.urlopen(request,postdata).read().decode('utf-8')
+                    codeInfo = successDict
+                except:
+                    codeInfo = errorDict
+            # 判断信息是否获取到
+            if resdata != '{}':
+                break
+
+
         data = {'data':resdata}
         data.update(codeInfo)
         return data

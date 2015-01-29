@@ -10,23 +10,12 @@ import threading
 import re
 
 
-token2 = '2.009HsraD0vuTD36b3ccb26b1gs4dHE'
-token = '2.009HsraDigyO3Bcfc27562c30xrfIr'
-
-# # 已插入的微博id
-# def getExitWeiboId():
-#     sql = '''SELECT distinct StatusID FROM statusinfo'''
-#     mop = MySQLOperator.MySQLOP()
-#     data = mop.fetchArr(sql)
-#     return data
-#
-# # 已插入的用户Id
-# def getExitUserId():
-#     sql = '''SELECT distinct UserID FROM userinfo'''
-#     mop = MySQLOperator.MySQLOP()
-#     data = mop.fetchArr(sql)
-#     return data
-#
+# 获取token 列表
+def getTokens():
+    sql = '''SELECT distinct token FROM tokenlist '''
+    mop = MySQLOperator.MySQLOP()
+    data = mop.fetchArr(sql)
+    return data
 
 
 # 获取地址数据
@@ -35,7 +24,6 @@ def getAddressArr():
     mop = MySQLOperator.MySQLOP()
     data = mop.fetchArr(sql)
     return data
-
 
 # 获取经度
 def getJingDu(address_arr,address):
@@ -158,6 +146,8 @@ def getRootWeiboInfo(address_arr):
     rootmid_arr = getRootWeiboMid()
     # 判断根微博id是否已经存在微博表中
     db_data = getAllWeiboFromDB()
+    tokensArr = getTokens()
+    token = tokensArr[0][0]
     for i in range(0,len(rootmid_arr)):
         rootmid = rootmid_arr[i]
         if rootmid in db_data:
@@ -175,32 +165,28 @@ def getRootWeiboInfo(address_arr):
 
 def getChildWeiboInfo(start,address_arr):
     mid_arr = getWeiboMid()
+    tokensArr = getTokens()
+
     for i in range(start,len(mid_arr)):
         print "--->第 "+str(i+1)+" 个！"
         mid = mid_arr[i]
         # 判断根微博id是否已经存在微博表中
         db_data = getAllWeiboFromDB()
+        # 已经存在，跳过
         if mid in db_data:
             continue
 
-        data = getWeiboJsonData(mid,token)
-        if data['code'] == '1':
-            jdata = data['data']
-            insertIntoWeiboStatusTable(jdata,address_arr)
-            insertIntoUserTable(jdata,address_arr)
-        else:
-            data2 = getWeiboJsonData(mid,token2)
-            if data2['code'] == '1':
-                jdata = data2['data']
+        for k in range(0,len(tokensArr)):
+            token = tokensArr[k][0]
+            data = getWeiboJsonData(mid,token)
+            if data['code'] == '1':
+                jdata = data['data']
                 insertIntoWeiboStatusTable(jdata,address_arr)
                 insertIntoUserTable(jdata,address_arr)
-            else:
+                break
+            elif k == len(tokensArr)-1:
                 print "第 "+str(i+1)+" 个失败！"
-                threading._sleep(5)
-                i = i - 1
-
-
-        threading._sleep(0.5)
+            threading._sleep(1)
 
 
 # 从数据库中读取所有用户信息

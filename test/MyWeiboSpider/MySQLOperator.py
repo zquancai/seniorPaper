@@ -27,15 +27,12 @@ class MySQLOP:
     sql = None
 
     def __init__(self):
-        print 'initial...'
         self.OpenDB()
 
     def __del__(self):
-        print 'deleting....'
         self.CloseDB()
 
     def OpenDB(self):
-        print 'opening db'
         self.db = MySQLdb.connect('localhost','root','','seniorPaper',charset='utf8')
 
     def CloseDB(self):
