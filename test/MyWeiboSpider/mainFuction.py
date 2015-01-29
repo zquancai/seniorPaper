@@ -31,15 +31,13 @@ def func(val):
 
     # 所有转发用户和微博
     elif val == 2:
-        # mids = ['3792721146228563','3792863789713311',
-        #         '3793017061814327','3792715437203513',
-        #         '3792732063042123']
+        # 第一条是亚航的(44k),
         mids = ['3792721146228563']
         for i in range(0,len(mids)):
             mid = mids[i]     # 微博id
             fromPage = 1 # 从第几页开始
             endPage = -1 # 少于0为全部-1
-            betweenPage = 2 #隔页
+            betweenPage = 0 #隔页
             Repost_repostTable.mainFunc(mid,fromPage,endPage,betweenPage)
 
     elif val == 3:
@@ -57,6 +55,7 @@ def func(val):
 
 
 # 通过不同值调用func函数执行相关功能
+# func(0)
 # func(2)
 # func(3)
 func(4)

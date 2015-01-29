@@ -82,7 +82,7 @@ class MySQLOP:
         for j in range(0,len(aArrary)):
             if j == 0:  # 第一个
                 rowsStr = singleRow(aArrary,rowsLen,j)
-            elif ((j % aNumLimit == 0)and(j != 0)):  # 到达设定的最大值
+            elif (((j % aNumLimit == 0)and(j != 0)) or j==len(aArrary)-1):  # 到达设定的最大值
                 sql_tp1_3 = rowsStr
                 # 拼接
                 sql_tpl = sql_tp1_1 + sql_tp1_2 + sql_tp1_3

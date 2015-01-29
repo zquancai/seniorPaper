@@ -13,6 +13,21 @@ import re
 token2 = '2.009HsraD0vuTD36b3ccb26b1gs4dHE'
 token = '2.009HsraDigyO3Bcfc27562c30xrfIr'
 
+# # 已插入的微博id
+# def getExitWeiboId():
+#     sql = '''SELECT distinct StatusID FROM statusinfo'''
+#     mop = MySQLOperator.MySQLOP()
+#     data = mop.fetchArr(sql)
+#     return data
+#
+# # 已插入的用户Id
+# def getExitUserId():
+#     sql = '''SELECT distinct UserID FROM userinfo'''
+#     mop = MySQLOperator.MySQLOP()
+#     data = mop.fetchArr(sql)
+#     return data
+#
+
 
 # 获取地址数据
 def getAddressArr():
@@ -114,7 +129,7 @@ def insertIntoUserTable(jdata,address_arr):
     avatarLarge = "'"+str(json.loads(jdata)['user']['avatar_large'])+"'"
     onlineStatus = "'"+''+"'"
     originalStatusID = "'"+''+"'"
-    userinfo_json = "'"+jdata.repl+"'"
+    userinfo_json = "'"+jdata+"'"
 
     sql = """INSERT INTO userinfo(UserID, Gender, createdAt, ScreenName, Location, latitude, longitude, Description, Url, profileImageUrl, followersCount, friendsCount, statusesCount, followMe, avatarLarge, onlineStatus, originalStatusID,userinfo_json)
                  VALUES ("""+UserID+""", """+Gender+""", """+createdAt+""", """+ScreenName+""", """+Location+""", """+latitude+""", """+longitude+""", """+Description+""", """+Url+""", """+profileImageUrl+""", """+followersCount+""", """+friendsCount+""", """+statusesCount+""", """+followMe+""", """+avatarLarge+""","""+onlineStatus+""", """+originalStatusID+""","""+userinfo_json+""")"""
@@ -127,13 +142,13 @@ def getWeiboJsonData(mid,token):
     return data
 
 def getWeiboMid():
-    sql = '''SELECT distinct selfstatusID FROM relationship '''
+    sql = '''SELECT distinct mid FROM testrepostrelation '''
     mop = MySQLOperator.MySQLOP()
     data = mop.fetchArr(sql)
     return data
 
 def getRootWeiboMid():
-    sql = '''SELECT distinct rootstatusID FROM relationship '''
+    sql = '''SELECT distinct weibo_id FROM testrepostrelation '''
     mop = MySQLOperator.MySQLOP()
     data = mop.fetchArr(sql)
     return data
@@ -161,6 +176,7 @@ def getRootWeiboInfo(address_arr):
 def getChildWeiboInfo(start,address_arr):
     mid_arr = getWeiboMid()
     for i in range(start,len(mid_arr)):
+        print "--->第 "+str(i+1)+" 个！"
         mid = mid_arr[i]
         # 判断根微博id是否已经存在微博表中
         db_data = getAllWeiboFromDB()
@@ -180,10 +196,12 @@ def getChildWeiboInfo(start,address_arr):
                 insertIntoUserTable(jdata,address_arr)
             else:
                 print "第 "+str(i+1)+" 个失败！"
+                threading._sleep(5)
+                i = i - 1
 
 
         threading._sleep(0.5)
-        print "--->第 "+str(i+1)+" 个！"
+
 
 # 从数据库中读取所有用户信息
 def getAllUsersFromDB():
