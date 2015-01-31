@@ -12,7 +12,7 @@ import re
 
 # 获取token 列表
 def getTokens():
-    sql = '''SELECT distinct token FROM tokenlist '''
+    sql = '''SELECT distinct token FROM tokenlist Order By Rand()'''
     mop = MySQLOperator.MySQLOP()
     data = mop.fetchArr(sql)
     return data
@@ -166,12 +166,13 @@ def getRootWeiboInfo(address_arr):
 def getChildWeiboInfo(start,address_arr):
     mid_arr = getWeiboMid()
     tokensArr = getTokens()
+    # 判断根微博id是否已经存在微博表中
+    db_data = getAllWeiboFromDB()
 
     for i in range(start,len(mid_arr)):
         print "--->第 "+str(i+1)+" 个！"
         mid = mid_arr[i]
-        # 判断根微博id是否已经存在微博表中
-        db_data = getAllWeiboFromDB()
+
         # 已经存在，跳过
         if mid in db_data:
             continue
@@ -186,7 +187,7 @@ def getChildWeiboInfo(start,address_arr):
                 break
             elif k == len(tokensArr)-1:
                 print "第 "+str(i+1)+" 个失败！"
-            threading._sleep(1)
+            threading._sleep(0.5)
 
 
 # 从数据库中读取所有用户信息

@@ -8,6 +8,8 @@ __author__ = 'Jack Li(britzlieg@gmail.com)'
 import urllib2
 import urllib
 import json
+import random
+
 
 # 常数定义,使用别人的key和secrect
 CLIENT_ID = '1244782104'  #这个貌似未认证。。。,所以只能用自己的测试账号2390635102@qq.com 19920430
@@ -26,7 +28,7 @@ successDict = {'code':'1'}
 # 获取代理服务器地址
 import MySQLOperator
 def getProxyServerList():
-    sql = '''SELECT distinct ip,proxy FROM proxylist '''
+    sql = '''SELECT distinct ip,proxy FROM proxylist Order By Rand()'''
     mop = MySQLOperator.MySQLOP()
     data = mop.fetchArr(sql)
     return data
@@ -82,6 +84,7 @@ class APIClient:
 
                 request = urllib2.Request(theURL)
                 #print(theURL)
+                print "Begin : 通过："+proxyServerArr[k][0]+"调用"
                 try:
                     resdata = urllib2.urlopen(request, timeout=5).read().decode('utf-8')
                     codeInfo = successDict
@@ -100,8 +103,10 @@ class APIClient:
                     codeInfo = errorDict
             # 判断信息是否获取到
             if resdata != '{}':
+                print 'End : S！'
                 break
-
+            else:
+                print 'End : F！'
 
         data = {'data':resdata}
         data.update(codeInfo)

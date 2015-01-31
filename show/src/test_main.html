@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<style type="text/css" media="screen">
+.navStyle{
+    width: 200px;
+    height: 40px;
+    color:rgb(13,23,23);
+    background: rgb(123,123,123);
+    font-size: 16pt;
+    font-weight: bold;
+}
+</style>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1 style="text-align:center">数据展示</h1>
+<select id="weibo_Val" class="navStyle">
+  <option value ="news">新闻</option>
+  <option value ="tech">科技</option>
+  <option value="funny">娱乐</option>
+</select>
+
+<select id="x_Val" class="navStyle">
+  <option value ="gender">性别</option>
+  <option value ="registerTime">注册时间</option>
+  <option value ="fansNum">粉丝数</option>
+  <option value ="followerNum">关注数</option>
+  <option value ="weiboNum">微博数</option>
+</select>
+
+
+<!-- Echarts 显示的区域 -->
+<div id="PieChart" style="height:400px">
+    
+</div>
+<div id="LineBarChart" style="height:400px">
+    
+</div>
+<div id="MapChart" style="height:400px">
+    
+</div>
+<!-- ECharts单文件引入 -->
+<script type="text/javascript" src="../echarts/echarts.js"></script>
+<!-- 引入外部js文件 -->
+<script type="text/javascript" src="value.js"></script>
+<script type="text/javascript">
+// // 变量配置
+var my_x = news_gender;
+var my_y = news_genderNum;
+var my_desc = news_desc;
+
+</script>
+<script type="text/javascript" src="linebar_chart.js"></script>
+    </body>
+</html>
