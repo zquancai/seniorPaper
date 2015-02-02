@@ -1,10 +1,10 @@
-function myblock_pieBar(my_x,my_y,my_desc,myChart){
+function myblock_pieBar(mypie_x,mypie_y,mypie_desc,myChart){
     // 基于准备好的dom，初始化echarts图表
 
     var option = {
     title : {
-        text: '某站点用户访问来源',
-        subtext: '纯属虚构',
+        text: mypie_desc,
+        subtext: '数据',
         x:'center'
     },
     tooltip : {
@@ -14,7 +14,7 @@ function myblock_pieBar(my_x,my_y,my_desc,myChart){
     legend: {
         orient : 'vertical',
         x : 'left',
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        data:mypie_x
     },
     toolbox: {
         show : true,
@@ -40,17 +40,11 @@ function myblock_pieBar(my_x,my_y,my_desc,myChart){
     calculable : true,
     series : [
         {
-            name:'访问来源',
+            name:'微博数据',
             type:'pie',
             radius : '55%',
             center: ['50%', '60%'],
-            data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
-            ]
+            data:mypie_y
         }
     ]
 };

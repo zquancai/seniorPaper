@@ -27,6 +27,7 @@
   <option value ="fansNum">粉丝数</option>
   <option value ="followerNum">关注数</option>
   <option value ="weiboNum">微博数</option>
+  <option value ="weiboGEO">用户分布</option>
 </select>
 <button type="button" id="refresh">点我刷新</button>
 
@@ -45,8 +46,10 @@
 <script type="text/javascript" src="../echarts/echarts.js"></script>
 <!-- 引入外部js文件 -->
 <script type="text/javascript" src="value.js"></script>
+<script type="text/javascript" src="commonFunc.js"></script>
 <script type="text/javascript" src="linebar_chart.js"></script>
 <script type="text/javascript" src="pie_chart.js"></script>
+<script type="text/javascript" src="map_chart.js"></script>
 <script type="text/javascript" src="jq/jquery-2.1.3.min.js"></script>
 <script type="text/javascript">
 
@@ -59,47 +62,98 @@ var chart3;
 
 $(document).ready(function(){
   $("#refresh").click(function(){
-    // chart1
-    if(chart1){
-        $("#refresh").hide();
-        chart1.clear();
-        chart1.dispose();
-        chart1 = 0;
-        $("#refresh").show();
-    }
-    else{
-        $("#refresh").hide();
-        // 变量配置
-        var my_x = news_gender;
-        var my_y = news_genderNum;
-        var my_desc = news_desc;
-        // 超级无语，居然类似于iOS的block语法
-        showPie(my_x,my_y,my_desc,function(myChart){
-            chart1 = myChart;
-            $("#refresh").show();
-        });
+    // 获取选择的值
+    selected_Weibo = $("#weibo_Val").val();
+    selected_X = $("#x_Val").val();
+    if(selected_Weibo == "news"){
+        if(selected_X == "weiboGEO"){
+            // 隐藏chart1 和 chart2
+            if (chart1) {
+                chart1.clear();
+                chart1.dispose();
+                chart1 = 0;
+            }
+            if (chart2) {
+                chart2.clear();
+                chart2.dispose();
+                chart2 = 0;
+            }
+            // chart3
+            if (chart3) {
+                $("#refresh").hide();
+                chart3.clear();
+                chart3.dispose();
+                chart3 = 0;
+                $("#refresh").show();
+            }
+            else{
+                var mymap_userCount = news_map_userCount;
+                var mymap_map_userRow = news_map_userRow;
+                $("#refresh").hide();
+                // 超级无语，居然类似于iOS的block语法
+                showMap(mymap_userCount,mymap_map_userRow,mybar_desc,function(myChart){
+                    chart3 = myChart;
+                    $("#refresh").show();
+                });
+            }
+        }
+        else{
+                if(selected_X == "gender"){
+                    var mypie_x = news_pie_gender;
+                    var mypie_y = news_pie_genderNum;
+                    var mypie_desc = news_pie_desc;
+
+                    var mybar_x = news_linebar_gender;
+                    var mybar_y = news_linebar_genderNum;
+                    var mybar_desc = news_linebar_desc;
+                }
+                // 只显示 chart1 和 chart2
+                if (chart3) {
+                    chart3.clear();
+                    chart3.dispose();
+                    chart3 = 0;  
+                }
+                // chart1
+                if(chart1){
+                    $("#refresh").hide();
+                    chart1.clear();
+                    chart1.dispose();
+                    chart1 = 0;
+                    $("#refresh").show();
+                }
+                else{
+                    $("#refresh").hide();
+                    // 超级无语，居然类似于iOS的block语法
+                    showPie(mypie_x,mypie_y,mypie_desc,function(myChart){
+                        chart1 = myChart;
+                        $("#refresh").show();
+                    });
+                }
+
+                // chart2
+                if (chart2) {
+                    $("#refresh").hide();
+                    chart2.clear();
+                    chart2.dispose();
+                    chart2 = 0;
+                    $("#refresh").show();
+                }
+                else{
+                    $("#refresh").hide();
+                    // 超级无语，居然类似于iOS的block语法
+                    showLineBar(mybar_x,mybar_y,mybar_desc,function(myChart){
+                        chart2 = myChart;
+                        $("#refresh").show();
+                    });
+                }
+            }
     }
 
-    // chart2
-    if (chart2) {
-        $("#refresh").hide();
-        chart2.clear();
-        chart2.dispose();
-        chart2 = 0;
-        $("#refresh").show();
-    }
-    else{
-        $("#refresh").hide();
-        // 变量配置
-        var my_x = news_gender;
-        var my_y = news_genderNum;
-        var my_desc = news_desc;
-        // 超级无语，居然类似于iOS的block语法
-        showLineBar(my_x,my_y,my_desc,function(myChart){
-            chart2 = myChart;
-            $("#refresh").show();
-        });
-    }
+
+
+
+
+
     
   });
 });

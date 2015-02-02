@@ -37,7 +37,7 @@ def func(val):
             mid = mids[i]     # 微博id
             fromPage = 1 # 从第几页开始
             endPage = -1 # 少于0为全部-1
-            betweenPage = 0 #隔页
+            betweenPage = 20 #隔页
             Repost_repostTable.mainFunc(mid,fromPage,endPage,betweenPage)
 
     elif val == 3:

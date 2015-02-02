@@ -88,10 +88,10 @@ def insertIntoWeiboStatusTable(jdata,address_arr):
     commentsCount = "'"+str(int(json.loads(jdata)['comments_count']))+"'"
 
     createAt_time = "'"+common.sinaTime_to_timestamp(timeTranslator(json.loads(jdata)['created_at']))+"'"
-    status_json = "'"+jdata+"'"
+    # status_json = "'"+jdata+"'"
 
-    sql = """INSERT INTO statusinfo(StatusID, Latitude, Longitude,Geo, Address, Province, City, UserID, createdAt, text, source, favorited, retweetedStatusID, repostsCount, commentsCount,createAt_time,status_json)
-                 VALUES ("""+StatusID+""", """+Latitude+""", """+Longitude+""", """+Geo+""", """+Address+""", """+Province+""", """+City+""", """+UserID+""", """+createdAt+""", """+text+""", """+source+""", """+favorited+""", """+retweetedStatusID+""", """+repostsCount+""", """+commentsCount+""", """+createAt_time+""","""+status_json+""")"""
+    sql = """INSERT INTO statusinfo(StatusID, Latitude, Longitude,Geo, Address, Province, City, UserID, createdAt, text, source, favorited, retweetedStatusID, repostsCount, commentsCount,createAt_time)
+                 VALUES ("""+StatusID+""", """+Latitude+""", """+Longitude+""", """+Geo+""", """+Address+""", """+Province+""", """+City+""", """+UserID+""", """+createdAt+""", """+text+""", """+source+""", """+favorited+""", """+retweetedStatusID+""", """+repostsCount+""", """+commentsCount+""", """+createAt_time+""")"""
 
     MySQLOperator.MySQLOP().ExcuteSQL(sql)
     print 'status done'
@@ -107,20 +107,15 @@ def insertIntoUserTable(jdata,address_arr):
     Location ="'"+str(json.loads(jdata)['user']['location'])+"'"
     latitude ="'"+getWeiDu(address_arr,str(json.loads(jdata)['user']['location']))+"'"
     longitude ="'"+getJingDu(address_arr,str(json.loads(jdata)['user']['location']))+"'"
-    Description ="'"+str(json.loads(jdata)['user']['description'])+"'"
-    Url = "'"+str(json.loads(jdata)['user']['url'])+"'"
-    profileImageUrl = "'"+str(json.loads(jdata)['user']['profile_image_url'])+"'"
     followersCount ="'"+str(json.loads(jdata)['user']['followers_count'])+"'"
     friendsCount = "'"+str(json.loads(jdata)['user']['friends_count'])+"'"
     statusesCount = "'"+str(json.loads(jdata)['user']['statuses_count'])+"'"
-    followMe = "'"+''+"'"
-    avatarLarge = "'"+str(json.loads(jdata)['user']['avatar_large'])+"'"
-    onlineStatus = "'"+''+"'"
-    originalStatusID = "'"+''+"'"
-    userinfo_json = "'"+jdata+"'"
+    favourites_count = "'"+str(json.loads(jdata)['user']['favourites_count'])+"'"
+    # 互粉数
+    bi_followers_count = "'"+str(json.loads(jdata)['user']['bi_followers_count'])+"'"
 
-    sql = """INSERT INTO userinfo(UserID, Gender, createdAt, ScreenName, Location, latitude, longitude, Description, Url, profileImageUrl, followersCount, friendsCount, statusesCount, followMe, avatarLarge, onlineStatus, originalStatusID,userinfo_json)
-                 VALUES ("""+UserID+""", """+Gender+""", """+createdAt+""", """+ScreenName+""", """+Location+""", """+latitude+""", """+longitude+""", """+Description+""", """+Url+""", """+profileImageUrl+""", """+followersCount+""", """+friendsCount+""", """+statusesCount+""", """+followMe+""", """+avatarLarge+""","""+onlineStatus+""", """+originalStatusID+""","""+userinfo_json+""")"""
+    sql = """INSERT INTO userinfo(UserID, Gender, createdAt, ScreenName, Location, latitude, longitude, followersCount, friendsCount, statusesCount,favourites_count,bi_followers_count)
+                 VALUES ("""+UserID+""", """+Gender+""", """+createdAt+""", """+ScreenName+""", """+Location+""", """+latitude+""", """+longitude+""", """+followersCount+""", """+friendsCount+""", """+statusesCount+""","""+favourites_count+""","""+bi_followers_count+""")"""
     MySQLOperator.MySQLOP().ExcuteSQL(sql)
     print 'user done'
 
@@ -168,6 +163,7 @@ def getChildWeiboInfo(start,address_arr):
     tokensArr = getTokens()
     # 判断根微博id是否已经存在微博表中
     db_data = getAllWeiboFromDB()
+    enableToken = 0
 
     for i in range(start,len(mid_arr)):
         print "--->第 "+str(i+1)+" 个！"
@@ -177,7 +173,7 @@ def getChildWeiboInfo(start,address_arr):
         if mid in db_data:
             continue
 
-        for k in range(0,len(tokensArr)):
+        for k in range(enableToken,len(tokensArr)):
             token = tokensArr[k][0]
             data = getWeiboJsonData(mid,token)
             if data['code'] == '1':
@@ -187,7 +183,13 @@ def getChildWeiboInfo(start,address_arr):
                 break
             elif k == len(tokensArr)-1:
                 print "第 "+str(i+1)+" 个失败！"
-            threading._sleep(0.5)
+            else:
+                if enableToken == len(tokensArr)-2:
+                    enableToken = 0
+                else:
+                    enableToken = enableToken + 1
+
+            threading._sleep(0.0)
 
 
 # 从数据库中读取所有用户信息
@@ -213,26 +215,3 @@ def mainFunc():
     # 从第几个用户开始
     getChildWeiboInfo(0,address_arr)
 
-# address_arr = getAddressArr()
-#
-# sql = '''SELECT StatusID,Address FROM statusinfo '''
-# mop = MySQLOperator.MySQLOP()
-# data = mop.fetchArr(sql)
-#
-# res_arr = []
-# dataLen = len(data)
-#
-# for i in range(0,dataLen):
-#     jingdu = getJingDu(address_arr,data[i][1])
-#     weidu = getWeiDu(address_arr,data[i][1])
-#     item = []
-#     item.append("'"+data[i][0]+"'")
-#     item.append("'"+jingdu+"'")
-#     item.append("'"+weidu+"'")
-#     res_arr.append(item)
-#
-# for j in range(0,len(res_arr)):
-#     item = res_arr[j]
-#     update_sql = '''UPDATE statusinfo SET Latitude='''+ item[1] +''',Longitude=''' + item[2] + ''' WHERE StatusID=''' + item[0]
-#     mop = MySQLOperator.MySQLOP()
-#     mop.ExcuteSQL(update_sql)

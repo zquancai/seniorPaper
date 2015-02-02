@@ -23,11 +23,5 @@ for i in range(0,len(personGenderArr)):
 print 'man:' + str(man_count)
 print 'woman:' + str(woman_count)
 
-# import urllib2
-#
-# proxy = urllib2.ProxyHandler({'http': '211.141.130.245:8118'})
-# opener = urllib2.build_opener(proxy)
-# urllib2.install_opener(opener)
-# response = urllib2.urlopen('http://www.baidu.com')
-# print response.read()
+
 

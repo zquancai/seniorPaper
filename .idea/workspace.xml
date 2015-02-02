@@ -15,21 +15,25 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/sina mining$Login_WeiboLogin.coverage" NAME="Login_WeiboLogin Coverage Results" MODIFIED="1419768903972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider" />
-    <SUITE FILE_PATH="coverage/sina mining$testMF_Sex.coverage" NAME="testMF_Sex Coverage Results" MODIFIED="1422532437861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
     <SUITE FILE_PATH="coverage/sina mining$Repost_userInfoAndWeiboInfo.coverage" NAME="Repost_userInfoAndWeiboInfo Coverage Results" MODIFIED="1422544922103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider" />
+    <SUITE FILE_PATH="coverage/sina mining$testMF_Sex.coverage" NAME="testMF_Sex Coverage Results" MODIFIED="1422876579784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
+    <SUITE FILE_PATH="coverage/sina mining$testMF_Status_Favor_Num.coverage" NAME="testMF_Status_Favor_Num Coverage Results" MODIFIED="1422881526921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
     <SUITE FILE_PATH="coverage/sina mining$shortCutSQLOp.coverage" NAME="shortCutSQLOp Coverage Results" MODIFIED="1418613054837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider" />
     <SUITE FILE_PATH="coverage/sina mining$Repost_repostTable.coverage" NAME="Repost_repostTable Coverage Results" MODIFIED="1419762290204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider" />
     <SUITE FILE_PATH="coverage/sina mining$__init____3_.coverage" NAME="__init__ (3) Coverage Results" MODIFIED="1417689949846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/sql" />
     <SUITE FILE_PATH="coverage/sina mining$Unittests_in_setup.coverage" NAME="Unittests in setup Coverage Results" MODIFIED="1412306944670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PyMySQL-master" />
     <SUITE FILE_PATH="coverage/sina mining$testHaveLogined.coverage" NAME="testHaveLogined Coverage Results" MODIFIED="1418627525255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider" />
+    <SUITE FILE_PATH="coverage/sina mining$testMF_registerTime.coverage" NAME="testMF_registerTime Coverage Results" MODIFIED="1422877490143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
     <SUITE FILE_PATH="coverage/sina mining$repostTable.coverage" NAME="repostTable Coverage Results" MODIFIED="1419082618521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider/repost" />
     <SUITE FILE_PATH="coverage/sina mining$weibo.coverage" NAME="weibo Coverage Results" MODIFIED="1418613386202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider/userInfo" />
+    <SUITE FILE_PATH="coverage/sina mining$testMF_statusNum.coverage" NAME="testMF_statusNum Coverage Results" MODIFIED="1422881031302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
     <SUITE FILE_PATH="coverage/sina mining$runtests.coverage" NAME="runtests Coverage Results" MODIFIED="1412306929945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PyMySQL-master" />
     <SUITE FILE_PATH="coverage/sina mining$example.coverage" NAME="example Coverage Results" MODIFIED="1417857511682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/PyMySQL-master" />
     <SUITE FILE_PATH="coverage/sina mining$testSDK.coverage" NAME="testSDK Coverage Results" MODIFIED="1418617019767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider/userInfo" />
     <SUITE FILE_PATH="coverage/sina mining$dropAll.coverage" NAME="dropAll Coverage Results" MODIFIED="1419076727783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider/repost" />
     <SUITE FILE_PATH="coverage/sina mining$userInfoGetter.coverage" NAME="userInfoGetter Coverage Results" MODIFIED="1418816999805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider/userInfo" />
     <SUITE FILE_PATH="coverage/sina mining$Topic_getHotTopic.coverage" NAME="Topic_getHotTopic Coverage Results" MODIFIED="1422162998366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider" />
+    <SUITE FILE_PATH="coverage/sina mining$testMF_fan_Follow_Hufen.coverage" NAME="testMF_fan_Follow_Hufen Coverage Results" MODIFIED="1422881732571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
     <SUITE FILE_PATH="coverage/sina mining$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1414296258455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider/cola-master/contrib/wiki" />
     <SUITE FILE_PATH="coverage/sina mining$WeiboMain.coverage" NAME="WeiboMain Coverage Results" MODIFIED="1417855236133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider" />
     <SUITE FILE_PATH="coverage/sina mining$common.coverage" NAME="common Coverage Results" MODIFIED="1419091580674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider" />
@@ -37,13 +41,14 @@
     <SUITE FILE_PATH="coverage/sina mining$myWeibo.coverage" NAME="myWeibo Coverage Results" MODIFIED="1418791329911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/weiboSDK" />
     <SUITE FILE_PATH="coverage/sina mining$WeiboEncode.coverage" NAME="WeiboEncode Coverage Results" MODIFIED="1418274224878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider" />
     <SUITE FILE_PATH="coverage/sina mining$userInfoAndWeiboInfo.coverage" NAME="userInfoAndWeiboInfo Coverage Results" MODIFIED="1419091588528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider/repost" />
+    <SUITE FILE_PATH="coverage/sina mining$testMF_GEO.coverage" NAME="testMF_GEO Coverage Results" MODIFIED="1422885941753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
     <SUITE FILE_PATH="coverage/sina mining$translateToTable.coverage" NAME="translateToTable Coverage Results" MODIFIED="1419125202724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider/repost" />
     <SUITE FILE_PATH="coverage/sina mining$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1414225055954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider/cola-master/cola" />
     <SUITE FILE_PATH="coverage/sina mining$config.coverage" NAME="config Coverage Results" MODIFIED="1412306234873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/sina mining$pymysqlTest.coverage" NAME="pymysqlTest Coverage Results" MODIFIED="1412157481850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sqltest" />
     <SUITE FILE_PATH="coverage/sina mining$start_master.coverage" NAME="start_master Coverage Results" MODIFIED="1414294260774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider/cola-master/bin" />
     <SUITE FILE_PATH="coverage/sina mining$TopicRegex.coverage" NAME="TopicRegex Coverage Results" MODIFIED="1418276432982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider" />
-    <SUITE FILE_PATH="coverage/sina mining$mainFuction.coverage" NAME="mainFuction Coverage Results" MODIFIED="1422767453189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider" />
+    <SUITE FILE_PATH="coverage/sina mining$mainFuction.coverage" NAME="mainFuction Coverage Results" MODIFIED="1422871988333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/MyWeiboSpider" />
     <SUITE FILE_PATH="coverage/sina mining$testsql__1_.coverage" NAME="testsql (1) Coverage Results" MODIFIED="1412306194341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/sina mining$MySQLOperator.coverage" NAME="MySQLOperator Coverage Results" MODIFIED="1418274245175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider" />
     <SUITE FILE_PATH="coverage/sina mining$weiboClient.coverage" NAME="weiboClient Coverage Results" MODIFIED="1418618055549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/WeiboSpider/userInfo" />
@@ -65,49 +70,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="mainFuction.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/mainFuction.py">
+      <file leaf-file-name="testMF_Status_Favor_Num.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Status_Favor_Num.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31264368" vertical-offset="669" max-vertical-offset="1518">
-              <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="1725">
+              <caret line="38" column="62" selection-start-line="10" selection-start-column="0" selection-end-line="38" selection-end-column="62" />
               <folding>
-                <element signature="e#239#262#0" expanded="true" />
+                <marker date="1422881523221" expanded="true" signature="137:204" placeholder="SELECT statu..userinfo..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="weiboClient.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/weiboClient.py">
+      <file leaf-file-name="testMF_fan_Follow_Hufen.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_fan_Follow_Hufen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="3979">
-              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2392">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="34" />
               <folding>
-                <element signature="e#156#170#0" expanded="true" />
-                <marker date="1422599564377" expanded="true" signature="816:855" placeholder="SELECT disti..proxylist..." />
-                <marker date="1422599564377" expanded="true" signature="816:871" placeholder="SELECT disti..proxylist..." />
+                <marker date="1422881729329" expanded="true" signature="137:220" placeholder="SELECT follo..userinfo..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Repost_userInfoAndWeiboInfo.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Repost_userInfoAndWeiboInfo.py">
+      <file leaf-file-name="common.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/common.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4217" max-vertical-offset="5589">
-              <caret line="189" column="32" selection-start-line="189" selection-start-column="32" selection-end-line="189" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="258" max-vertical-offset="690">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testMF_GEO.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_GEO.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2253" max-vertical-offset="2990">
+              <caret line="104" column="23" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
               <folding>
-                <element signature="e#60#78#0" expanded="true" />
-                <marker date="1422665723866" expanded="true" signature="198:234" placeholder="SELECT disti..tokenlist..." />
-                <marker date="1422665723866" expanded="true" signature="198:250" placeholder="SELECT disti..tokenlist..." />
-                <marker date="1422665723866" expanded="true" signature="378:440" placeholder="SELECT disti..changelocation..." />
-                <marker date="1422665723866" expanded="true" signature="2573:3114" placeholder="INSERT INTO ..." />
-                <marker date="1422665723866" expanded="true" signature="4474:5100" placeholder="INSERT INTO ..." />
-                <marker date="1422665723866" expanded="true" signature="5346:5389" placeholder="SELECT disti..testrepostrelation..." />
-                <marker date="1422665723866" expanded="true" signature="5510:5558" placeholder="SELECT disti..testrepostrelation..." />
-                <marker date="1422665723866" expanded="true" signature="7141:7177" placeholder="SELECT disti..userinfo..." />
-                <marker date="1422665723866" expanded="true" signature="7341:7381" placeholder="SELECT disti..statusinfo..." />
+                <marker date="1422885939565" expanded="true" signature="147:192" placeholder="SELECT Locat..userinfo..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mapdata.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/mapdata.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="369">
+              <caret line="0" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="739" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,12 +170,17 @@
         <option value="$PROJECT_DIR$/test/MyWeiboSpider/Topic_getHotTopic.py" />
         <option value="$PROJECT_DIR$/test/MyWeiboSpider/Repost_repostTable.py" />
         <option value="$PROJECT_DIR$/test/MyWeiboSpider/Repost_repostNode.py" />
-        <option value="$PROJECT_DIR$/test/MyWeiboSpider/mainFuction.py" />
         <option value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/__init__.py" />
-        <option value="$PROJECT_DIR$/test/MyWeiboSpider/MySQLOperator.py" />
-        <option value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Sex.py" />
         <option value="$PROJECT_DIR$/test/MyWeiboSpider/weiboClient.py" />
+        <option value="$PROJECT_DIR$/test/MyWeiboSpider/MySQLOperator.py" />
+        <option value="$PROJECT_DIR$/test/MyWeiboSpider/mainFuction.py" />
+        <option value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Sex.py" />
         <option value="$PROJECT_DIR$/test/MyWeiboSpider/Repost_userInfoAndWeiboInfo.py" />
+        <option value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_registerTime.py" />
+        <option value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_statusNum.py" />
+        <option value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Status_Favor_Num.py" />
+        <option value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_fan_Follow_Hufen.py" />
+        <option value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_GEO.py" />
       </list>
     </option>
   </component>
@@ -326,94 +345,8 @@
       <recent name="D:\MyCode\seniorPaper\sina mining\sqltest" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mainFuction">
-    <configuration default="false" name="mainFuction" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/MyWeiboSpider" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="sina mining" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/mainFuction.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Login_WeiboLogin" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/MyWeiboSpider" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="sina mining" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/Login_WeiboLogin.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Repost_userInfoAndWeiboInfo" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/MyWeiboSpider" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="sina mining" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/Repost_userInfoAndWeiboInfo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Topic_getHotTopic" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/MyWeiboSpider" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="sina mining" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/Topic_getHotTopic.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="testMF_Sex" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.testMF_GEO">
+    <configuration default="false" name="testMF_registerTime" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -426,7 +359,87 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="sina mining" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Sex.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_registerTime.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testMF_statusNum" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="sina mining" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\stardust\Desktop\project\seniorPaper\test\MyWeiboSpider\Statistics\testMF_Status_Favor_Num.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testMF_Status_Favor_Num" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="sina mining" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Status_Favor_Num.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testMF_fan_Follow_Hufen" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="sina mining" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_fan_Follow_Hufen.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testMF_GEO" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="sina mining" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_GEO.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
@@ -641,19 +654,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.mainFuction" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Login_WeiboLogin" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Repost_userInfoAndWeiboInfo" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Topic_getHotTopic" />
-      <item index="4" class="java.lang.String" itemvalue="Python.testMF_Sex" />
+      <item index="0" class="java.lang.String" itemvalue="Python.testMF_registerTime" />
+      <item index="1" class="java.lang.String" itemvalue="Python.testMF_statusNum" />
+      <item index="2" class="java.lang.String" itemvalue="Python.testMF_Status_Favor_Num" />
+      <item index="3" class="java.lang.String" itemvalue="Python.testMF_fan_Follow_Hufen" />
+      <item index="4" class="java.lang.String" itemvalue="Python.testMF_GEO" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.mainFuction" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Repost_userInfoAndWeiboInfo" />
-        <item index="2" class="java.lang.String" itemvalue="Python.testMF_Sex" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Topic_getHotTopic" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Login_WeiboLogin" />
+        <item index="0" class="java.lang.String" itemvalue="Python.testMF_GEO" />
+        <item index="1" class="java.lang.String" itemvalue="Python.testMF_fan_Follow_Hufen" />
+        <item index="2" class="java.lang.String" itemvalue="Python.testMF_Status_Favor_Num" />
+        <item index="3" class="java.lang.String" itemvalue="Python.testMF_statusNum" />
+        <item index="4" class="java.lang.String" itemvalue="Python.testMF_registerTime" />
       </list>
     </recent_temporary>
   </component>
@@ -671,8 +684,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
-    <editor active="false" />
+    <frame x="-7" y="0" width="1378" height="735" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -680,13 +693,13 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2684049" sideWeight="0.8916545" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36963192" sideWeight="0.8916545" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2246696" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38880485" sideWeight="0.8916545" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4309816" sideWeight="0.8916545" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -768,46 +781,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="304" />
+      <option name="time" value="312" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/sql/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06779661" vertical-offset="0" max-vertical-offset="649">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/PyMySQL-master/example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6313466" vertical-offset="0" max-vertical-offset="550">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/WeiboSpider/WeiboSearch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10169491" vertical-offset="0" max-vertical-offset="649">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/WeiboSpider/d_tpl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46560848" vertical-offset="0" max-vertical-offset="1166">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/WeiboSpider/WeiboEncode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1219">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/WeiboSpider/myLoginCookie.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
@@ -934,13 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1244" max-vertical-offset="2967">
           <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48303714" vertical-offset="0" max-vertical-offset="690">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1111,58 +1082,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/MySQLOperator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="491" max-vertical-offset="2277">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Sex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="897">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Repost_userInfoAndWeiboInfo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4217" max-vertical-offset="5589">
-          <caret line="189" column="32" selection-start-line="189" selection-start-column="32" selection-end-line="189" selection-end-column="32" />
-          <folding>
-            <element signature="e#60#78#0" expanded="true" />
-            <marker date="1422665723866" expanded="true" signature="198:234" placeholder="SELECT disti..tokenlist..." />
-            <marker date="1422665723866" expanded="true" signature="198:250" placeholder="SELECT disti..tokenlist..." />
-            <marker date="1422665723866" expanded="true" signature="378:440" placeholder="SELECT disti..changelocation..." />
-            <marker date="1422665723866" expanded="true" signature="2573:3114" placeholder="INSERT INTO ..." />
-            <marker date="1422665723866" expanded="true" signature="4474:5100" placeholder="INSERT INTO ..." />
-            <marker date="1422665723866" expanded="true" signature="5346:5389" placeholder="SELECT disti..testrepostrelation..." />
-            <marker date="1422665723866" expanded="true" signature="5510:5558" placeholder="SELECT disti..testrepostrelation..." />
-            <marker date="1422665723866" expanded="true" signature="7141:7177" placeholder="SELECT disti..userinfo..." />
-            <marker date="1422665723866" expanded="true" signature="7341:7381" placeholder="SELECT disti..statusinfo..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/weiboClient.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="3979">
           <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding>
-            <element signature="e#156#170#0" expanded="true" />
-            <marker date="1422599564377" expanded="true" signature="816:855" placeholder="SELECT disti..proxylist..." />
-            <marker date="1422599564377" expanded="true" signature="816:871" placeholder="SELECT disti..proxylist..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/MySQLOperator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9452736" vertical-offset="0" max-vertical-offset="2277">
+          <caret line="35" column="73" selection-start-line="35" selection-start-column="73" selection-end-line="35" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/mainFuction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31264368" vertical-offset="669" max-vertical-offset="1518">
-          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        <state vertical-scroll-proportion="-0.3809524" vertical-offset="849" max-vertical-offset="1403">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Sex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="137" max-vertical-offset="759">
+          <caret line="14" column="41" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="41" />
           <folding>
-            <element signature="e#239#262#0" expanded="true" />
+            <marker date="1422865820335" expanded="true" signature="-1:-1" placeholder="SELECT Gende..userinfo..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_registerTime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6650602" vertical-offset="552" max-vertical-offset="1564">
+          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+          <folding>
+            <marker date="1422877485839" expanded="true" signature="-1:-1" placeholder="SELECT creat..userinfo..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_Status_Favor_Num.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="1725">
+          <caret line="38" column="62" selection-start-line="10" selection-start-column="0" selection-end-line="38" selection-end-column="62" />
+          <folding>
+            <marker date="1422881523221" expanded="true" signature="137:204" placeholder="SELECT statu..userinfo..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_fan_Follow_Hufen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2392">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <marker date="1422881729329" expanded="true" signature="137:220" placeholder="SELECT follo..userinfo..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Repost_userInfoAndWeiboInfo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="5014">
+          <caret line="186" column="50" selection-start-line="186" selection-start-column="50" selection-end-line="186" selection-end-column="50" />
+          <folding>
+            <marker date="1422871977719" expanded="true" signature="-1:-1" placeholder="SELECT disti..tokenlist..." />
+            <marker date="1422871977719" expanded="true" signature="-1:-1" placeholder="SELECT disti..changelocation..." />
+            <marker date="1422871977719" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1422871977719" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1422871977719" expanded="true" signature="-1:-1" placeholder="SELECT disti..testrepostrelation..." />
+            <marker date="1422871977719" expanded="true" signature="-1:-1" placeholder="SELECT disti..testrepostrelation..." />
+            <marker date="1422871977719" expanded="true" signature="-1:-1" placeholder="SELECT disti..userinfo..." />
+            <marker date="1422871977719" expanded="true" signature="-1:-1" placeholder="SELECT disti..statusinfo..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="258" max-vertical-offset="690">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/testMF_GEO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2253" max-vertical-offset="2990">
+          <caret line="104" column="23" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
+          <folding>
+            <marker date="1422885939565" expanded="true" signature="147:192" placeholder="SELECT Locat..userinfo..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyWeiboSpider/Statistics/mapdata.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="369">
+          <caret line="0" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="739" />
+          <folding />
         </state>
       </provider>
     </entry>

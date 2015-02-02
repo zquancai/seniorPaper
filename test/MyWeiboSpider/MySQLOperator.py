@@ -33,7 +33,7 @@ class MySQLOP:
         self.CloseDB()
 
     def OpenDB(self):
-        self.db = MySQLdb.connect('localhost','root','','seniorPaper',charset='utf8')
+        self.db = MySQLdb.connect('localhost','root','','seniorPaper_news',charset='utf8')
 
     def CloseDB(self):
         self.db.close()
