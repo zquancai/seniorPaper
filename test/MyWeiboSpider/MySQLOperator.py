@@ -33,7 +33,7 @@ class MySQLOP:
         self.CloseDB()
 
     def OpenDB(self):
-        self.db = MySQLdb.connect('localhost','root','','seniorPaper_news',charset='utf8')
+        self.db = MySQLdb.connect('localhost','root','','seniorPaper_entertainment',charset='utf8')
 
     def CloseDB(self):
         self.db.close()
@@ -89,6 +89,6 @@ class MySQLOP:
             else:
                 rowsStr = rowsStr + "," + singleRow(aArrary,rowsLen,j)
 
-
-
+    # # 能够插入特殊字符
+    # def insertData(self):
 
